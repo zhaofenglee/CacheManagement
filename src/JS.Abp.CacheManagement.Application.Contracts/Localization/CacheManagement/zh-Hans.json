@@ -1,0 +1,21 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "MyAccount": "我的账户",
+    "SamplePageMessage": "CacheManagement模块的示例页面",
+    "Menu:CacheManagement": "缓存管理",
+    "Permission:CacheManagement": "缓存管理",
+    "Permission:CacheManagements": "缓存管理",
+    "Permission:Create": "创建",
+    "Permission:Edit": "编辑",
+    "Permission:Delete": "删除",
+    "CacheManagement": "缓存管理",
+    "CacheGroupTree": "缓存分组",
+    "CleanAll": "清除全部",
+    "AllProducts": "全部项目",
+    "ShowCache": "显示缓存",
+    "CacheKey": "缓存键",
+    "CacheValue": "缓存值",
+    "Update": "更新"
+  }
+}

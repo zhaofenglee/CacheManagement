@@ -1,0 +1,329 @@
+﻿@page "/cache-management"
+@using Blazorise.TreeView
+@using JS.Abp.CacheManagement.CacheItems
+
+@inherits CacheManagementComponentBase
+@inject ICacheItemAppService CacheItemAppService
+
+<h3>@L["CacheManagement"]</h3>
+<link href="_content/Blazorise.TreeView/blazorise.treeview.css" rel="stylesheet" />
+<Row>
+    <Column ColumnSize="ColumnSize.Is6">
+        <Card>
+            <CardHeader>
+                <Row Class="justify-content-between">
+                    <Column ColumnSize="ColumnSize.IsAuto">
+                        <Heading Size="HeadingSize.Is4">
+                            @L["CacheGroupTree"]
+                        </Heading>
+                    </Column>
+
+                    <Column ColumnSize="ColumnSize.IsAuto">
+                        <Button Color="Color.Primary" Clicked="CleanAllCacheAsync">
+                            <Icon Name="IconName.Delete" Margin="Margin.Is1.FromEnd"></Icon>@L["CleanAll"]
+                        </Button>
+                    </Column>
+
+                  @*  <Column ColumnSize="ColumnSize.IsAuto">
+                        <Button Color="Color.Primary">
+                            <Icon Name="IconName.Add" Margin="Margin.Is1.FromEnd"></Icon>@L["AddCache"]
+                        </Button>
+                    </Column>*@
+                </Row>
+            </CardHeader>
+            <CardBody>
+                <TreeView Nodes="Items"
+                          GetChildNodes="@(item => item.Children)"
+                          HasChildNodes="@(item => item.Children?.Any() == true)"
+                          @bind-SelectedNode="selectedNode"
+                          @onclick="() => OnSelectedNodeChangedAsync()"
+                          @bind-ExpandedNodes="ExpandedNodes">
+                    <NodeContent>@context.Text</NodeContent>
+                </TreeView>
+
+                
+
+            </CardBody>
+        </Card>
+    </Column>
+
+    <Column ColumnSize="ColumnSize.Is6">
+        <Card>
+            <CardHeader>
+                @if (selectedNode.Text.IsNullOrWhiteSpace())
+                {
+                    <span>@L["AllProducts"]</span>
+                }
+                else
+                {
+                    <span>@selectedNode.Value</span>
+                }
+            </CardHeader>
+            <CardBody>
+                <DataGrid TItem="CacheItemDataDto"
+                          Data="CacheItemList"
+                          ReadData="OnDataGridReadAsync"
+                          TotalItems="TotalCount"
+                          ShowPager="true"
+                          ShowPageSizes="false"
+                          PageSize="PageSize"
+                          Responsive="true">
+                    <DataGridColumns>
+
+                        <DataGridEntityActionsColumn TItem="CacheItemDataDto">
+                            <DisplayTemplate>
+                                <EntityActions TItem="CacheItemDataDto" Type="ActionType.Button">
+                                    <EntityAction TItem="CacheItemDataDto"
+                                                  Clicked="() => OpenCacheItemChangeModal(context)"
+                                                  Text="@L["ShowCache"]">
+                                    </EntityAction>
+                                </EntityActions>
+                            </DisplayTemplate>
+                        </DataGridEntityActionsColumn>
+
+                        <DataGridColumn TItem="CacheItemDataDto"
+                                        Field="CacheKey"
+                                        Caption="@L["CacheKey"]">
+                        </DataGridColumn>
+
+
+                    </DataGridColumns>
+                </DataGrid>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+
+
+
+@* ************************* SHOW MODAL ************************* *@
+<Modal @ref="ShowCacheModal" Closing="@ShowCacheModal.CancelClosingModalWhenFocusLost">
+    <ModalContent Centered="true">
+        <Form id="ShowCacheModalForm">
+            <ModalHeader>
+                <ModalTitle>@L["Update"]</ModalTitle>
+                <CloseButton Clicked="CloseShowCacheModalAsync" />
+            </ModalHeader>
+            <ModalBody>
+                <Field>
+                    <FieldLabel>@L["CacheKey"]</FieldLabel>
+                    <TextEdit @bind-Text="@EditCacheItemData.CacheKey"></TextEdit>
+                </Field>
+
+                <Field>
+                    <FieldLabel>@L["CacheValue"]</FieldLabel>
+                    <MemoEdit Rows="8" @bind-Text="@EditCacheItemData.CacheValue"></MemoEdit>
+                </Field>
+
+
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary"
+                        Clicked="CloseShowCacheModalAsync">
+                    @L["Cancel"]
+                </Button>
+                <Button Color="Color.Warning"
+                        Clicked="DeleteCacheAsync">
+                    @L["Delete"]
+                </Button>
+                <SubmitButton Form="ShowCacheModalForm" Clicked="UpdateCacheAsync" />
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+
+@code {
+
+    public class Item
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+        public List<Item> Children { get; set; }
+    }
+    private GetCacheItemInput Filter { get; set; }
+
+    private int PageSize { get; } = Volo.Abp.Application.Dtos.LimitedResultRequestDto.DefaultMaxResultCount;
+    private int CurrentPage { get; set; } = 1;
+    private string CurrentSorting { get; set; }
+    private int TotalCount { get; set; }
+    private IReadOnlyList<CacheItemDataDto> CacheItemList { get; set; }
+
+    private IReadOnlyList<CacheItemDataDto> CacheGroupList { get; set; }
+    List<Item> Items { get; set; } = new List<Item>();
+    IList<Item> ExpandedNodes = new List<Item>();
+    Item selectedNode =new Item();
+    private Modal? ShowCacheModal { get; set; }
+
+    private CacheItemDataDto EditCacheItemData { get; set; }
+    public CacheManagement()
+    {
+        CacheGroupList = new List<CacheItemDataDto>();
+        EditCacheItemData = new();
+        Filter = new ()
+            {
+                MaxResultCount = PageSize,
+                SkipCount = (CurrentPage - 1) * PageSize,
+                Sorting = CurrentSorting
+            };
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetCacheGroupsAsync();
+    }
+
+    private async Task GetCacheGroupsAsync()
+    {
+        CacheGroupList = (await CacheItemAppService.GetListAsync(new GetCacheItemInput(){CacheName="*",MaxResultCount=1000})).Items;
+        var nodes = new List<CacheItemNode>();
+        Items = new List<Item>();
+        var cacheGroupsDictionary = new Dictionary<string, List<CacheItemDataDto>>();
+        int id = 0;
+        foreach (var cacheGroup in CacheGroupList)
+        {
+            CacheItemNode pnode = null;
+            string[] cacheItems = cacheGroup.CacheKey.Split(':');
+            string cacheKey = "";
+            for (int i = 0; i < cacheItems.Length; i++)
+            {
+                cacheKey += cacheItems[i];
+                var pnode1 = nodes.FirstOrDefault(x => x.CacheKey == cacheKey);
+                if (pnode1 == null)
+                {
+                    pnode1 = new CacheItemNode() { NodeID = id++, CacheName = cacheItems[i], Parentid = pnode == null ? -1 : pnode.NodeID,CacheKey = cacheKey};
+                    nodes.Add(pnode1);
+                }
+                cacheKey += ":";
+                pnode = pnode1;
+
+
+            }        
+
+        }
+        loadroot(nodes);
+        
+    }
+    private void loadroot(List<CacheItemNode> list)
+    {
+        foreach (var item in list.Where(x => x.Parentid == -1))
+        {
+            var tn = new Item() { Text = item.CacheName,Children = new List<Item>(),Value = item.CacheKey};
+            Items.Add(tn);
+            loadchild(list, tn, item);
+        }
+    }
+
+    private void loadchild(List<CacheItemNode> list, Item tn, CacheItemNode node)
+    {
+        foreach (var item in list.Where(x => x.Parentid == node.NodeID))
+        {
+            var childen = new Item() { Text = item.CacheName,Children = new List<Item>(),Value = item.CacheKey };
+            tn.Children.Add(childen);
+            loadchild(list, childen, item);
+        }
+    }
+
+    private async Task OnDataGridReadAsync(DataGridReadDataEventArgs<CacheItemDataDto> e)
+    {
+        //CurrentSorting = e.Columns
+        //    .Where(c => c.SortDirection != SortDirection.Default)
+        //    .Select(c => c.Field + (c.SortDirection == SortDirection.Descending ? " DESC" : ""))
+        //    .JoinAsString(",");
+        CurrentPage = e.Page;
+        await GetCacheItemsAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task GetCacheItemsAsync()
+    {
+        Filter.MaxResultCount = PageSize;
+        Filter.SkipCount = (CurrentPage - 1) * PageSize;
+        Filter.Sorting = CurrentSorting;
+        Filter.CacheName = "*";
+        Filter.DisplayName = selectedNode.Value;
+        var result = await CacheItemAppService.GetListAsync(Filter);
+        CacheItemList = result.Items;
+        TotalCount = (int)result.TotalCount;
+    }
+
+    private async Task OnSelectedNodeChangedAsync()
+    {
+        await GetCacheItemsAsync();
+        await InvokeAsync(StateHasChanged);
+        //if (SelectedProductGroup == node)
+        //{
+        //    return;
+        //}
+
+        //SelectedProductGroup = node;
+
+        //if (SelectedProductGroup != null)
+        //{
+        //    await GetProductsAsync(SelectedProductGroup.Id);
+    //}
+    }
+
+    private async void OpenCacheItemChangeModal(CacheItemDataDto input)
+    {
+        EditCacheItemData = new()
+            {
+                CacheKey = input.CacheKey,
+                CacheValue = (await CacheItemAppService.GetValueAsync(input.CacheKey)),
+            };
+
+        ShowCacheModal.Show();
+    }
+
+    private async Task CloseShowCacheModalAsync()
+    {
+        await ShowCacheModal.Hide();
+    }
+    private async Task UpdateCacheAsync()
+    {
+        try
+        {
+
+            //await SysModelListsAppService.UpdateAsync(EditingSysModelListId, EditingSysModelList);
+            //await GetSysModelListsAsync();
+            //await EditSysModelListModal.Hide();
+            await GetCacheItemsAsync();
+            await InvokeAsync(StateHasChanged);
+            await CloseShowCacheModalAsync();
+        }
+        catch (Exception ex)
+        {
+            await HandleErrorAsync(ex);
+        }
+    }
+
+     private async Task CleanAllCacheAsync()
+    {
+        try
+        {
+            await CacheItemAppService.ClearAllAsync();
+            await GetCacheGroupsAsync();
+            await GetCacheItemsAsync();
+            await InvokeAsync(StateHasChanged);
+        }
+        catch (Exception ex)
+        {
+            await HandleErrorAsync(ex);
+        }
+    }
+
+    private async Task DeleteCacheAsync()
+    {
+        try
+        {
+            await CacheItemAppService.DeleteAsync(EditCacheItemData.CacheKey);
+            await GetCacheItemsAsync();
+            await InvokeAsync(StateHasChanged);
+            await CloseShowCacheModalAsync();
+        }
+        catch (Exception ex)
+        {
+            await HandleErrorAsync(ex);
+        }
+    }
+}

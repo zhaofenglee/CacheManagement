@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "JS.Abp.CacheManagement": {
+      "path": "JS.Abp.CacheManagement.abpmdl.json"
+    }
+  }
+}

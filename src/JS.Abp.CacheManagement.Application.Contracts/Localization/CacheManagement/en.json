@@ -1,0 +1,21 @@
+{
+  "culture": "en",
+  "texts": {
+    "MyAccount": "My account",
+    "SamplePageMessage": "A sample page for the CacheManagement module",
+    "Menu:CacheManagement": "Cache Management",
+    "Permission:CacheManagement": "Cache Management",
+    "Permission:CacheManagements": "Cache Managements",
+    "Permission:Create": "Create",
+    "Permission:Edit": "Edit",
+    "Permission:Delete": "Delete",
+    "CacheManagement": "Cache Management",
+    "CacheGroupTree": "Cache Group Tree",
+    "CleanAll": "Clean All",
+    "AllProducts": "All Products",
+    "ShowCache": "Show Cache",
+    "CacheKey": "Cache Key",
+    "CacheValue": "Cache Value",
+    "Update": "Update"
+  }
+}

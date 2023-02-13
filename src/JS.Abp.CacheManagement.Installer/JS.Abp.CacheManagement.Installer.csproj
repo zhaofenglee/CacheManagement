@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="..\..\JS.Abp.CacheManagement.abpmdl.json" />
+      <EmbeddedResource Include="..\..\JS.Abp.CacheManagement.abpmdl.json" />
+    </ItemGroup>
+
+</Project>

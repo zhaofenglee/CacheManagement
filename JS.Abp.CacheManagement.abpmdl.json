@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "JS.Abp.CacheManagement.Domain.Shared": {
+      "path": "src/JS.Abp.CacheManagement.Domain.Shared/JS.Abp.CacheManagement.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Domain": {
+      "path": "src/JS.Abp.CacheManagement.Domain/JS.Abp.CacheManagement.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Application.Contracts": {
+      "path": "src/JS.Abp.CacheManagement.Application.Contracts/JS.Abp.CacheManagement.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Application": {
+      "path": "src/JS.Abp.CacheManagement.Application/JS.Abp.CacheManagement.Application.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.EntityFrameworkCore": {
+      "path": "src/JS.Abp.CacheManagement.EntityFrameworkCore/JS.Abp.CacheManagement.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.MongoDB": {
+      "path": "src/JS.Abp.CacheManagement.MongoDB/JS.Abp.CacheManagement.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.HttpApi": {
+      "path": "src/JS.Abp.CacheManagement.HttpApi/JS.Abp.CacheManagement.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.HttpApi.Client": {
+      "path": "src/JS.Abp.CacheManagement.HttpApi.Client/JS.Abp.CacheManagement.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.TestBase": {
+      "path": "test/JS.Abp.CacheManagement.TestBase/JS.Abp.CacheManagement.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.EntityFrameworkCore.Tests": {
+      "path": "test/JS.Abp.CacheManagement.EntityFrameworkCore.Tests/JS.Abp.CacheManagement.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.MongoDB.Tests": {
+      "path": "test/JS.Abp.CacheManagement.MongoDB.Tests/JS.Abp.CacheManagement.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.Domain.Tests": {
+      "path": "test/JS.Abp.CacheManagement.Domain.Tests/JS.Abp.CacheManagement.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.Application.Tests": {
+      "path": "test/JS.Abp.CacheManagement.Application.Tests/JS.Abp.CacheManagement.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.HttpApi.Host": {
+      "path": "host/JS.Abp.CacheManagement.HttpApi.Host/JS.Abp.CacheManagement.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.Web": {
+      "path": "src/JS.Abp.CacheManagement.Web/JS.Abp.CacheManagement.Web.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/JS.Abp.CacheManagement.HttpApi.Client.ConsoleTestApp/JS.Abp.CacheManagement.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "JS.Abp.CacheManagement.Web.Host": {
+      "path": "host/JS.Abp.CacheManagement.Web.Host/JS.Abp.CacheManagement.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.AuthServer": {
+      "path": "host/JS.Abp.CacheManagement.AuthServer/JS.Abp.CacheManagement.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.Host.Shared": {
+      "path": "host/JS.Abp.CacheManagement.Host.Shared/JS.Abp.CacheManagement.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.Web.Unified": {
+      "path": "host/JS.Abp.CacheManagement.Web.Unified/JS.Abp.CacheManagement.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.Blazor": {
+      "path": "src/JS.Abp.CacheManagement.Blazor/JS.Abp.CacheManagement.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Blazor.Host": {
+      "path": "host/JS.Abp.CacheManagement.Blazor.Host/JS.Abp.CacheManagement.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "JS.Abp.CacheManagement.Blazor.Server": {
+      "path": "src/JS.Abp.CacheManagement.Blazor.Server/JS.Abp.CacheManagement.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Blazor.WebAssembly": {
+      "path": "src/JS.Abp.CacheManagement.Blazor.WebAssembly/JS.Abp.CacheManagement.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "JS.Abp.CacheManagement.Blazor.Server.Host": {
+      "path": "host/JS.Abp.CacheManagement.Blazor.Server.Host/JS.Abp.CacheManagement.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}
