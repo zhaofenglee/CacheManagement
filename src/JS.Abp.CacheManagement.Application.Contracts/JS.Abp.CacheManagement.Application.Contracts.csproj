@@ -61,9 +61,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="7.0.1" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="7.0.1" />
-    <PackageReference Include="Volo.Abp.Validation" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)" />
   </ItemGroup>
 
 </Project>

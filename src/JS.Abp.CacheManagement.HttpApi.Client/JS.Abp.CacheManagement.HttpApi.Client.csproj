@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Http.Client" Version="$(VoloAbpPackageVersion)" />
     <ProjectReference Include="..\JS.Abp.CacheManagement.Application.Contracts\JS.Abp.CacheManagement.Application.Contracts.csproj" />
   </ItemGroup>
 
