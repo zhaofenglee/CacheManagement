@@ -5,65 +5,24 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Localization\CacheManagement\ar.json" />
-    <None Remove="Localization\CacheManagement\cs.json" />
-    <None Remove="Localization\CacheManagement\de.json" />
-    <None Remove="Localization\CacheManagement\en-GB.json" />
-    <None Remove="Localization\CacheManagement\en.json" />
-    <None Remove="Localization\CacheManagement\es.json" />
-    <None Remove="Localization\CacheManagement\fi.json" />
-    <None Remove="Localization\CacheManagement\fr.json" />
-    <None Remove="Localization\CacheManagement\hi.json" />
-    <None Remove="Localization\CacheManagement\hu.json" />
-    <None Remove="Localization\CacheManagement\is.json" />
-    <None Remove="Localization\CacheManagement\it.json" />
-    <None Remove="Localization\CacheManagement\nl.json" />
-    <None Remove="Localization\CacheManagement\pl-PL.json" />
-    <None Remove="Localization\CacheManagement\pt-BR.json" />
-    <None Remove="Localization\CacheManagement\ro-RO.json" />
-    <None Remove="Localization\CacheManagement\ru.json" />
-    <None Remove="Localization\CacheManagement\sk.json" />
-    <None Remove="Localization\CacheManagement\sl.json" />
-    <None Remove="Localization\CacheManagement\tr.json" />
-    <None Remove="Localization\CacheManagement\vi.json" />
-    <None Remove="Localization\CacheManagement\zh-Hans.json" />
-    <None Remove="Localization\CacheManagement\zh-Hant.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\CacheManagement\ar.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\cs.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\de.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\en-GB.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\en.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\es.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\fi.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\fr.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\hi.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\hu.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\is.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\it.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\nl.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\pl-PL.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\pt-BR.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\ro-RO.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\ru.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\sk.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\sl.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\tr.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\vi.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\zh-Hans.json" />
-    <EmbeddedResource Include="Localization\CacheManagement\zh-Hant.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Authorization" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\CacheManagement\*.json" />
+    <Content Remove="Localization\CacheManagement\*.json" />
   </ItemGroup>
 
 </Project>
