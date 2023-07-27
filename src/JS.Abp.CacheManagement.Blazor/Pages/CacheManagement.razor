@@ -60,6 +60,20 @@
                 }
             </CardHeader>
             <CardBody>
+                  <Form id="SearchForm" class="mb-3">
+                  <Addons>
+                      <Addon AddonType="AddonType.Body">
+                          <TextEdit Placeholder="@L["Filter"].Value" @bind-Text="@Filter.FilterText"/>
+                      </Addon>
+                      <Addon AddonType="AddonType.End">
+                          <SubmitButton Form="SearchForm" Clicked="GetCacheItemsAsync">
+                              <Icon Name="IconName.Search" Class="me-1"></Icon>@L["Search"]
+                          </SubmitButton>
+                      </Addon>
+                  </Addons>
+                  </Form>
+
+
                 <DataGrid TItem="CacheItemDataDto"
                           Data="CacheItemList"
                           ReadData="OnDataGridReadAsync"
@@ -284,9 +298,11 @@
         try
         {
 
-            //await SysModelListsAppService.UpdateAsync(EditingSysModelListId, EditingSysModelList);
-            //await GetSysModelListsAsync();
-            //await EditSysModelListModal.Hide();
+            await CacheItemAppService.UpdateAsync(new CacheItemUpdateDto()
+            {
+                CacheKey = EditCacheItemData.CacheKey,
+                Value = EditCacheItemData.CacheValue
+            });
             await GetCacheItemsAsync();
             await InvokeAsync(StateHasChanged);
             await CloseShowCacheModalAsync();

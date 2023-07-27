@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
@@ -67,6 +68,10 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
 
         var items = new List<CacheItemDataDto>(keys.Select(key => new CacheItemDataDto
         { CacheKey = key, CacheValue = key }));
+        if (!input.FilterText.IsNullOrWhiteSpace())
+        {
+            items = items.Where(c=>c.CacheKey.Contains(input.FilterText) || c.CacheValue.Contains(input.FilterText)).ToList();
+        }
         return new PagedResultDto<CacheItemDataDto>()
         {
             Items = items.Skip(input.SkipCount).Take(input.MaxResultCount).ToList(),
@@ -123,6 +128,12 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
         return await _redisCache.GetStringAsync(cacheKey, _cancellationTokenProvider.FallbackToProvider());
     }
 
+    public virtual async Task UpdateAsync(CacheItemUpdateDto input)
+    {
+        var byteArray = Encoding.UTF8.GetBytes(input.Value);
+        await _redisCache.SetAsync(input.CacheKey,byteArray);
+    }
+
     protected virtual string GetNormalizedKey(CacheItem cacheItem, string cacheKey)
     {
         return _keyNormalizer.NormalizeKey(new DistributedCacheKeyNormalizeArgs(cacheKey, cacheItem.CacheName,
@@ -131,6 +142,7 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
 
     public async Task DeleteAsync(string cacheKey)
     {
+        
         await _redisCache.RemoveAsync(cacheKey, _cancellationTokenProvider.FallbackToProvider());
     }
 }

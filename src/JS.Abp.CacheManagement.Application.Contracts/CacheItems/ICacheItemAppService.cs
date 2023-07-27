@@ -19,5 +19,7 @@ public interface ICacheItemAppService : IApplicationService
 
     Task<string> GetValueAsync(string cacheKey);
 
+    Task UpdateAsync(CacheItemUpdateDto input);
+    
     Task DeleteAsync(string cacheKey);
 }

@@ -8,10 +8,10 @@ using Volo.Abp.AspNetCore.Mvc;
 
 namespace JS.Abp.CacheManagement.Controllers.CacheItems;
 
-[RemoteService]
-[Area("app")]
+[RemoteService(Name = CacheManagementRemoteServiceConsts.RemoteServiceName)]
+[Area("cacheManagement")]
 [ControllerName("CacheItem")]
-[Route("api/app/cache-item")]
+[Route("api/cache-management/cache-item")]
 public class CacheItemController : AbpController, ICacheItemAppService
 {
     private readonly ICacheItemAppService _cacheItemAppService;
@@ -54,6 +54,12 @@ public class CacheItemController : AbpController, ICacheItemAppService
     {
         return _cacheItemAppService.GetValueAsync(cacheKey);
     }
+    [HttpPut]
+    public Task UpdateAsync(CacheItemUpdateDto input)
+    {
+        return _cacheItemAppService.UpdateAsync(input);
+    }
+
     [HttpDelete]
     [Route("{cachekey}")]
     public Task DeleteAsync(string cacheKey)
