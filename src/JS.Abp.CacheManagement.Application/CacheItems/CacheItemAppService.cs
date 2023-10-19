@@ -54,6 +54,19 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
         return _redisDatabase;
     }
 
+    public virtual async Task<List<CacheItemDataDto>> GetAllAsync()
+    {
+        var keys = await GetKeysAsync(new CacheItem()
+        {
+            CacheName = "*",
+        });
+
+        var items = new List<CacheItemDataDto>(keys.Select(key => new CacheItemDataDto
+            { CacheKey = key, CacheValue = key }));
+
+        return items;
+    }
+
     public async Task<PagedResultDto<CacheItemDataDto>> GetListAsync(GetCacheItemInput input)
     {
         var token = _cancellationTokenProvider.FallbackToProvider();

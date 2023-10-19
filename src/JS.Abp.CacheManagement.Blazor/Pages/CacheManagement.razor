@@ -189,7 +189,7 @@
 
     private async Task GetCacheGroupsAsync()
     {
-        CacheGroupList = (await CacheItemAppService.GetListAsync(new GetCacheItemInput(){CacheName="*",MaxResultCount=1000})).Items;
+        CacheGroupList = (await CacheItemAppService.GetAllAsync());
         var nodes = new List<CacheItemNode>();
         Items = new List<Item>();
         var cacheGroupsDictionary = new Dictionary<string, List<CacheItemDataDto>>();
