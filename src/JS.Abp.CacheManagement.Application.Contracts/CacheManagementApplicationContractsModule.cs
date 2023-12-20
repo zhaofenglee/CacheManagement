@@ -12,8 +12,7 @@ namespace JS.Abp.CacheManagement;
 [DependsOn(
 //typeof(CacheManagementDomainSharedModule),
 typeof(AbpDddApplicationContractsModule),
-typeof(AbpAuthorizationModule),
-typeof(AbpValidationModule)
+typeof(AbpAuthorizationAbstractionsModule)
     )]
 public class CacheManagementApplicationContractsModule : AbpModule
 {

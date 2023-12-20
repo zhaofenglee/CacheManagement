@@ -3,15 +3,20 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.0" />
-    <ProjectReference Include="..\JS.Abp.CacheManagement.TestBase\JS.Abp.CacheManagement.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="7.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\JS.Abp.CacheManagement.EntityFrameworkCore\JS.Abp.CacheManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\JS.Abp.CacheManagement.Application.Tests\JS.Abp.CacheManagement.Application.Tests.csproj" />
   </ItemGroup>
 
 </Project>

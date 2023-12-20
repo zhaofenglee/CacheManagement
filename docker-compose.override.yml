@@ -8,7 +8,7 @@ services:
     ports:
       - "51599:1433"
 
-  identity-server:
+  auth-server:
     environment:
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - ConnectionStrings__Default=Server=sqlserver;Database=CacheManagement_Identity;Trusted_Connection=True;User=sa;Password=yourStrong(!)Password;Integrated Security=false
@@ -24,6 +24,6 @@ services:
       - ConnectionStrings__AbpPermissionManagement=Server=sqlserver;Database=CacheManagement_Identity;Trusted_Connection=True;User=sa;Password=yourStrong(!)Password;Integrated Security=false
       - ConnectionStrings__AbpAuditLogging=Server=sqlserver;Database=CacheManagement_Identity;Trusted_Connection=True;User=sa;Password=yourStrong(!)Password;Integrated Security=false
       - ConnectionStrings__SqlServerCache=Server=sqlserver;Database=CacheManagement_Cache;Trusted_Connection=True;User=sa;Password=yourStrong(!)Password;Integrated Security=false
-      - AuthServer__Authority=http://identity-server
+      - AuthServer__Authority=http://auth-server
     ports:
       - "51601:80"

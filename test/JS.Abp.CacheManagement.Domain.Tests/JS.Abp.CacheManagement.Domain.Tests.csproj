@@ -3,12 +3,18 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\JS.Abp.CacheManagement.Domain\JS.Abp.CacheManagement.Domain.csproj" />
+    <ProjectReference Include="..\JS.Abp.CacheManagement.TestBase\JS.Abp.CacheManagement.TestBase.csproj" />
   </ItemGroup>
 
 </Project>

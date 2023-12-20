@@ -12,7 +12,6 @@ namespace JS.Abp.CacheManagement;
     typeof(AbpAutofacModule),
     typeof(AbpTestBaseModule),
     typeof(AbpAuthorizationModule)
-    //typeof(CacheManagementDomainModule)
     )]
 public class CacheManagementTestBaseModule : AbpModule
 {

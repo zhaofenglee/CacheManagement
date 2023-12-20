@@ -8,6 +8,6 @@ services:
     depends_on:
       - sqlserver
     environment:
-      - IdentityServer_DB=CacheManagement_Identity
+      - AuthServer_DB=CacheManagement_Identity
       - CacheManagement_DB=CacheManagement_ModuleDb
       - SA_PASSWORD=yourStrong(!)Password

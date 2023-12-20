@@ -3,7 +3,8 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
     <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -12,12 +13,12 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Authorization.Abstractions" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.10" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

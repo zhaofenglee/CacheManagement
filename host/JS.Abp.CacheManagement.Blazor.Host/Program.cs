@@ -5,11 +5,11 @@ namespace JS.Abp.CacheManagement.Blazor.Host;
 
 public class Program
 {
-    public async static Task Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-        var application = await builder.AddApplicationAsync<CacheManagementBlazorHostModule>(options =>
+        var application = builder.AddApplication<CacheManagementBlazorHostModule>(options =>
         {
             options.UseAutofac();
         });

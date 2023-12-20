@@ -6,10 +6,10 @@ services:
     volumes:
       - dbdata:/var/opt/mssql
   
-  identity-server:
+  auth-server:
     build:
       context: ../../
-      dockerfile: templates/service/host/IdentityServerHost/Dockerfile
+      dockerfile: templates/service/host/AuthServerHost/Dockerfile
     depends_on:
       - sqlserver      
   
@@ -19,7 +19,7 @@ services:
       dockerfile: templates/service/host/JS.Abp.CacheManagement.Host/Dockerfile
     depends_on:
       - sqlserver
-      - identity-server
+      - auth-server
 
 volumes:
   dbdata:

@@ -22,14 +22,17 @@ public class Program
             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
             .Enrich.FromLogContext()
             .WriteTo.Async(c => c.File("Logs/logs.txt"))
+#if DEBUG
             .WriteTo.Async(c => c.Console())
+#endif
             .CreateLogger();
 
         try
         {
             Log.Information("Starting web host.");
             var builder = WebApplication.CreateBuilder(args);
-            builder.Host.AddAppSettingsSecretsJson()
+            builder.Host
+                .AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog();
             await builder.AddApplicationAsync<CacheManagementHttpApiHostModule>();
@@ -40,6 +43,11 @@ public class Program
         }
         catch (Exception ex)
         {
+            if (ex is HostAbortedException)
+            {
+                throw;
+            }
+
             Log.Fatal(ex, "Host terminated unexpectedly!");
             return 1;
         }

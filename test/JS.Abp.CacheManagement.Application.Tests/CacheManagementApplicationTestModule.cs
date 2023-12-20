@@ -4,7 +4,7 @@ namespace JS.Abp.CacheManagement;
 
 [DependsOn(
     typeof(CacheManagementApplicationModule),
-    typeof(CacheManagementDomainTestModule)
+    typeof(CacheManagementTestBase<>)
     )]
 public class CacheManagementApplicationTestModule : AbpModule
 {
