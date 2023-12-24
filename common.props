@@ -28,10 +28,10 @@
 		</PropertyGroup>
 	</Target>
 
-<!--	<Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">-->
-<!--		<Copy-->
-<!--		  SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg"-->
-<!--		  DestinationFolder="..\..\packageshare\"/>-->
-<!--	</Target>-->
+	<Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<Copy
+		  SourceFiles="$(OutputPath)$(PackageId).$(PackageVersion).nupkg"
+		  DestinationFolder="..\..\packageshare\"/>
+	</Target>
 
 </Project>
