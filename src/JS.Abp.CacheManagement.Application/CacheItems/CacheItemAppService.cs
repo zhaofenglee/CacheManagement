@@ -67,6 +67,62 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
         return items;
     }
 
+    public virtual async Task<List<CacheItemDto>> GetTreeAsync(string? cacheKey = null)
+    {
+        var cacheItemDatas = (await GetAllAsync());
+        var nodes = new List<CacheItemNode>();
+        List<CacheItemDto> items = new List<CacheItemDto>();
+        var cacheGroupsDictionary = new Dictionary<string, List<CacheItemDataDto>>();
+        int id = 0;
+        foreach (var cacheGroup in cacheItemDatas.Where(c=>c.CacheKey!=null))
+        {
+            CacheItemNode pnode = null;
+            string[] cacheItems = cacheGroup.CacheKey.Split(':');
+            string key = "";
+            for (int i = 0; i < cacheItems.Length; i++)
+            {
+                key += cacheItems[i];
+                var pnode1 = nodes.FirstOrDefault(x => x.CacheKey == key);
+                if (pnode1 == null)
+                {
+                    pnode1 = new CacheItemNode() { 
+                        NodeID = id++,
+                        CacheName = cacheItems[i], 
+                        Parentid = pnode == null ? -1 : pnode.NodeID,
+                        CacheKey = key
+                        
+                    };
+                    nodes.Add(pnode1);
+                }
+                key += ":";
+                pnode = pnode1;
+            }        
+
+        }
+        LoadRoot(nodes,items);
+        return items;
+    }
+    
+    private void LoadRoot(List<CacheItemNode> list,List<CacheItemDto> items)
+    {
+        foreach (var item in list.Where(x => x.Parentid == -1))
+        {
+            var tn = new CacheItemDto() { CacheName = item.CacheName,Children = new List<CacheItemDto>(),CacheKey = item.CacheKey};
+            items.Add(tn);
+            LoadChild(list, tn, item);
+        }
+    }
+
+    private void LoadChild(List<CacheItemNode> list, CacheItemDto tn, CacheItemNode node)
+    {
+        foreach (var item in list.Where(x => x.Parentid == node.NodeID))
+        {
+            var childen = new CacheItemDto() { CacheName = item.CacheName,Children = new List<CacheItemDto>(),CacheKey = item.CacheKey };
+            tn.Children.Add(childen);
+            LoadChild(list, childen, item);
+        }
+    }
+
     public async Task<PagedResultDto<CacheItemDataDto>> GetListAsync(GetCacheItemInput input)
     {
         var token = _cancellationTokenProvider.FallbackToProvider();

@@ -38,7 +38,7 @@
                           @bind-SelectedNode="selectedNode"
                           @onclick="() => OnSelectedNodeChangedAsync()"
                           @bind-ExpandedNodes="ExpandedNodes">
-                    <NodeContent>@context.Text</NodeContent>
+                    <NodeContent>@context.CacheName</NodeContent>
                 </TreeView>
 
                 
@@ -50,13 +50,13 @@
     <Column ColumnSize="ColumnSize.Is6">
         <Card>
             <CardHeader>
-                @if (selectedNode.Text.IsNullOrWhiteSpace())
+                @if (selectedNode.CacheName.IsNullOrWhiteSpace())
                 {
                     <span>@L["AllProducts"]</span>
                 }
                 else
                 {
-                    <span>@selectedNode.Value</span>
+                    <span>@selectedNode.CacheKey</span>
                 }
             </CardHeader>
             <CardBody>
@@ -164,9 +164,9 @@
     private IReadOnlyList<CacheItemDataDto> CacheItemList { get; set; }
 
     private IReadOnlyList<CacheItemDataDto> CacheGroupList { get; set; }
-    List<Item> Items { get; set; } = new List<Item>();
-    IList<Item> ExpandedNodes = new List<Item>();
-    Item selectedNode =new Item();
+    List<CacheItemDto> Items { get; set; } = new List<CacheItemDto>();
+    IList<CacheItemDto> ExpandedNodes = new List<CacheItemDto>();
+    CacheItemDto selectedNode =new CacheItemDto();
     private Modal? ShowCacheModal { get; set; }
 
     private CacheItemDataDto EditCacheItemData { get; set; }
@@ -189,54 +189,9 @@
 
     private async Task GetCacheGroupsAsync()
     {
-        CacheGroupList = (await CacheItemAppService.GetAllAsync());
-        var nodes = new List<CacheItemNode>();
-        Items = new List<Item>();
-        var cacheGroupsDictionary = new Dictionary<string, List<CacheItemDataDto>>();
-        int id = 0;
-        foreach (var cacheGroup in CacheGroupList)
-        {
-            CacheItemNode pnode = null;
-            string[] cacheItems = cacheGroup.CacheKey.Split(':');
-            string cacheKey = "";
-            for (int i = 0; i < cacheItems.Length; i++)
-            {
-                cacheKey += cacheItems[i];
-                var pnode1 = nodes.FirstOrDefault(x => x.CacheKey == cacheKey);
-                if (pnode1 == null)
-                {
-                    pnode1 = new CacheItemNode() { NodeID = id++, CacheName = cacheItems[i], Parentid = pnode == null ? -1 : pnode.NodeID,CacheKey = cacheKey};
-                    nodes.Add(pnode1);
-                }
-                cacheKey += ":";
-                pnode = pnode1;
-
-
-            }        
-
-        }
-        loadroot(nodes);
-        
-    }
-    private void loadroot(List<CacheItemNode> list)
-    {
-        foreach (var item in list.Where(x => x.Parentid == -1))
-        {
-            var tn = new Item() { Text = item.CacheName,Children = new List<Item>(),Value = item.CacheKey};
-            Items.Add(tn);
-            loadchild(list, tn, item);
-        }
+        Items = await CacheItemAppService.GetTreeAsync();
     }
 
-    private void loadchild(List<CacheItemNode> list, Item tn, CacheItemNode node)
-    {
-        foreach (var item in list.Where(x => x.Parentid == node.NodeID))
-        {
-            var childen = new Item() { Text = item.CacheName,Children = new List<Item>(),Value = item.CacheKey };
-            tn.Children.Add(childen);
-            loadchild(list, childen, item);
-        }
-    }
 
     private async Task OnDataGridReadAsync(DataGridReadDataEventArgs<CacheItemDataDto> e)
     {
@@ -255,7 +210,7 @@
         Filter.SkipCount = (CurrentPage - 1) * PageSize;
         Filter.Sorting = CurrentSorting;
         Filter.CacheName = "*";
-        Filter.DisplayName = selectedNode.Value;
+        Filter.DisplayName = selectedNode.CacheKey;
         var result = await CacheItemAppService.GetListAsync(Filter);
         CacheItemList = result.Items;
         TotalCount = (int)result.TotalCount;
@@ -265,17 +220,6 @@
     {
         await GetCacheItemsAsync();
         await InvokeAsync(StateHasChanged);
-        //if (SelectedProductGroup == node)
-        //{
-        //    return;
-        //}
-
-        //SelectedProductGroup = node;
-
-        //if (SelectedProductGroup != null)
-        //{
-        //    await GetProductsAsync(SelectedProductGroup.Id);
-    //}
     }
 
     private async void OpenCacheItemChangeModal(CacheItemDataDto input)

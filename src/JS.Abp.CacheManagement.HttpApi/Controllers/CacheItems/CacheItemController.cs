@@ -26,6 +26,12 @@ public class CacheItemController : AbpController, ICacheItemAppService
     {
         return _cacheItemAppService.GetAllAsync();
     }
+    [HttpGet]
+    [Route("tree")]
+    public virtual Task<List<CacheItemDto>> GetTreeAsync(string? cacheKey = null)
+    {
+         return _cacheItemAppService.GetTreeAsync(cacheKey);
+    }
 
     [HttpGet]
     public virtual Task<PagedResultDto<CacheItemDataDto>> GetListAsync(GetCacheItemInput input)

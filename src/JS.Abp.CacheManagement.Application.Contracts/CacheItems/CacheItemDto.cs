@@ -1,14 +1,12 @@
+using System.Collections.Generic;
+
 namespace JS.Abp.CacheManagement.CacheItems;
 
 public class CacheItemDto
 {
+    public string CacheKey { get; set; }
+    
     public string CacheName { get; set; }
-
-    public string DisplayName { get; set; }
-
-    public string Description { get; set; }
-
-    public bool IgnoreMultiTenancy { get; set; }
-
-    public bool TenantAllowed { get; set; }
+    
+    public List<CacheItemDto> Children { get; set; }
 }

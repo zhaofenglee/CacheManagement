@@ -9,6 +9,8 @@ namespace JS.Abp.CacheManagement.CacheItems;
 public interface ICacheItemAppService : IApplicationService
 {
     Task<List<CacheItemDataDto>> GetAllAsync();
+    
+    Task<List<CacheItemDto>> GetTreeAsync(string? cacheKey = null);
     Task<PagedResultDto<CacheItemDataDto>> GetListAsync(GetCacheItemInput input);
     Task<IEnumerable<string>> GetKeysAsync(CacheItem cacheItem);
 
