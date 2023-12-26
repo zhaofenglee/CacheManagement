@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using JS.Abp.CacheManagement.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using StackExchange.Redis;
@@ -159,7 +161,7 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
             return await Task.FromResult(RedisDatabase.Multiplexer.GetServer(RedisDatabase.Multiplexer.GetEndPoints().First())
                 .Keys(RedisDatabase.Database, normalizedKey).Select(k => k.ToString()).Where(m => m.Contains(cacheItem.DisplayName)));
     }
-
+    [Authorize(CacheManagementPermissions.CacheManagement.Delete)]
     public virtual async Task ClearAllAsync()
     {
         var token = _cancellationTokenProvider.FallbackToProvider();
@@ -172,7 +174,7 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
         }
 
     }
-
+    [Authorize(CacheManagementPermissions.CacheManagement.Delete)]
     public virtual async Task ClearAsync(CacheItem cacheItem)
     {
         var token = _cancellationTokenProvider.FallbackToProvider();
@@ -184,7 +186,7 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
             await _redisCache.RemoveAsync(key, token);
         }
     }
-
+    [Authorize(CacheManagementPermissions.CacheManagement.Delete)]
     public virtual async Task ClearSpecificAsync(CacheItem cacheItem, string cacheKey)
     {
         var key = GetNormalizedKey(cacheItem, cacheKey);
@@ -196,7 +198,7 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
     {
         return await _redisCache.GetStringAsync(cacheKey, _cancellationTokenProvider.FallbackToProvider());
     }
-
+    [Authorize(CacheManagementPermissions.CacheManagement.Edit)]
     public virtual async Task UpdateAsync(CacheItemUpdateDto input)
     {
         var byteArray = Encoding.UTF8.GetBytes(input.Value);
@@ -208,10 +210,9 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
         return _keyNormalizer.NormalizeKey(new DistributedCacheKeyNormalizeArgs(cacheKey, cacheItem.CacheName,
             cacheItem.IgnoreMultiTenancy));
     }
-
+    [Authorize(CacheManagementPermissions.CacheManagement.Delete)]
     public async Task DeleteAsync(string cacheKey)
     {
-        
         await _redisCache.RemoveAsync(cacheKey, _cancellationTokenProvider.FallbackToProvider());
     }
 }
