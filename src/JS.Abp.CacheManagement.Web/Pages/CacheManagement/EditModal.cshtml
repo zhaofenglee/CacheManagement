@@ -1,0 +1,50 @@
+﻿@page
+@inject IStringLocalizer<CacheManagementResource> L
+@using JS.Abp.CacheManagement.Localization
+@using JS.Abp.CacheManagement.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@inject IAuthorizationService Authorization
+@model JS.Abp.CacheManagement.Web.Pages.CacheManagement.EditModal
+
+@{
+    Layout = null;
+}
+@section scripts {
+    <abp-script-bundle>
+        <abp-script src="/Pages/CacheManagement/editModal.js"/>
+    </abp-script-bundle>
+}
+
+
+<form data-ajaxForm="true" asp-page="/CacheManagement/EditModal" autocomplete="off">
+    <abp-modal id="CacheManagementEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+
+            <abp-input asp-for="CacheKey" readonly="true"/>
+
+            <abp-input asp-for="CacheValue" text-area/>
+
+
+        </abp-modal-body>
+
+        <abp-modal-footer>
+            <abp-button data-bs-dismiss="modal" text="@L["Cancel"].Value" button-type="Secondary"></abp-button>
+            @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheManagement.Delete))
+            {
+                <abp-button id="DeleteButton" text="@L["Delete"].Value"  button-type="Warning" ></abp-button>
+            }
+            @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheManagement.Edit))
+            {
+                <abp-button text="@L["Save"].Value" type="submit" button-type="Primary"></abp-button>
+            }
+           
+        </abp-modal-footer>
+
+    </abp-modal>
+</form>

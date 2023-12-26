@@ -34,9 +34,10 @@ public class CacheManagementWebModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        var configuration = context.Services.GetConfiguration();
         Configure<AbpNavigationOptions>(options =>
         {
-            options.MenuContributors.Add(new CacheManagementMenuContributor());
+            options.MenuContributors.Add(new CacheManagementMenuContributor(configuration));
         });
 
         Configure<AbpVirtualFileSystemOptions>(options =>

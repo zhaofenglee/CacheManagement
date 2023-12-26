@@ -16,6 +16,8 @@
     "ShowCache": "显示缓存",
     "CacheKey": "缓存键",
     "CacheValue": "缓存值",
-    "Update": "更新"
+    "Update": "更新",
+    "AreYouSureToDelete": "确定要删除吗？",
+    "SuccessfullyDeleted": "删除成功"
   }
 }

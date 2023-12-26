@@ -1,11 +1,98 @@
 ﻿@page
 @using Microsoft.Extensions.Localization
 @using JS.Abp.CacheManagement.Localization
+@using JS.Abp.CacheManagement.Permissions
+@using JS.Abp.CacheManagement.Web.Menus
 @using JS.Abp.CacheManagement.Web.Pages.CacheManagement
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Alert
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Blockquote
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Button
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Card
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Grid
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Table
+@using Volo.Abp.AspNetCore.Mvc.UI.Bundling.TagHelpers
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.AspNetCore.Mvc.UI.Packages.JsTree
+@using Volo.Abp.AspNetCore.Mvc.UI.Packages.Uppy
 @model JS.Abp.CacheManagement.Web.Pages.CacheManagement.IndexModel
+@inject IAuthorizationService Authorization
 @inject IStringLocalizer<CacheManagementResource> L
-
+@inject IPageLayout PageLayout
 @{
+    PageLayout.Content.Title = L["Menu:CacheManagement"].Value;
+    PageLayout.Content.MenuItemName = CacheManagementMenus.CacheManagement;
 }
-<h1>CacheManagement</h1>
-<p>@L["SamplePageMessage"]</p>
+
+@section styles{
+    <abp-style-bundle>
+        <abp-style type="typeof(JsTreeStyleContributor)"/>
+    </abp-style-bundle>
+}
+
+@section scripts {
+    <abp-script-bundle>
+        <abp-script type="typeof(JsTreeScriptContributor)"/>
+        <abp-script src="/Pages/CacheManagement/index.js"/>
+    </abp-script-bundle>
+}
+
+<div id="OrganizationUnitsWrapper">
+    <abp-row>
+        <abp-column size-md="_12" size-lg="_6">
+            <abp-card>
+                <abp-card-body>
+                    <abp-card-title>
+                        <abp-row h-align="Between">
+                            <abp-column>
+                                <span style="font-size:initial"> @L["CacheGroupTree"]</span>
+                            </abp-column>
+                            <abp-column>
+                                  @if (await Authorization.IsGrantedAsync(CacheManagementPermissions.CacheManagement.Delete))
+                                  {
+                                      <abp-button class="float-end" button-type="Primary" size="Small" id="CleanAllCache" text="@L["CleanAll"].Value" icon="fa-solid fa-trash"/>
+                                  }
+                               
+                            </abp-column>
+                        </abp-row>
+                    </abp-card-title>
+                    <div id="DirectoryTree"></div>
+                </abp-card-body>
+            </abp-card>
+        </abp-column>
+        <abp-column size-md="_12" size-lg="_6">
+            <abp-card>
+                <abp-card-body>
+                    <abp-card-title>
+                        <abp-row h-align="Between">
+                            <abp-column>
+                                  <h3 class="selected-cache-name"></h3>
+                            </abp-column>
+
+                        </abp-row>
+                    </abp-card-title>
+                    <abp-row id="CacheManagement_Table_Header" class="mb-3">
+                        <abp-column>
+                            <form id="SearchForm" autocomplete="off">
+                                <div class="input-group">
+                                    <input id="FilterText" class="form-control page-search-filter-text" placeholder="@L["Filter"]">
+                                    <abp-button button-type="Primary" type="submit">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </abp-button>
+                                </div>
+                            </form>
+                        </abp-column>
+                    </abp-row>
+                    <abp-row>
+                        <abp-column>
+                            <abp-table id="CacheItemTable" directory-id="" striped-rows="true" class="nowrap"></abp-table>
+                        </abp-column>
+                    </abp-row>
+                </abp-card-body>
+            </abp-card>
+
+
+        </abp-column>
+    </abp-row>
+</div>

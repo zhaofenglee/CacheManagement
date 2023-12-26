@@ -16,6 +16,8 @@
     "ShowCache": "Show Cache",
     "CacheKey": "Cache Key",
     "CacheValue": "Cache Value",
-    "Update": "Update"
+    "Update": "Update",
+    "AreYouSureToDelete": "Are you sure to delete this item?",
+    "SuccessfullyDeleted": "Successfully deleted"
   }
 }
