@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Asp.Versioning;
 using JS.Abp.CacheManagement.CacheItems;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
