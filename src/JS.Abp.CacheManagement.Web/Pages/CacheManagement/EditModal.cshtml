@@ -13,14 +13,10 @@
 @{
     Layout = null;
 }
-@section scripts {
-    <abp-script-bundle>
-        <abp-script src="/Pages/CacheManagement/editModal.js"/>
-    </abp-script-bundle>
-}
 
+<abp-script src="/Pages/CacheManagement/editModal.js" />
 
-<form data-ajaxForm="true" asp-page="/CacheManagement/EditModal" autocomplete="off">
+<form  method="post" asp-page="/CacheManagement/EditModal"  data-script-class="abp.modals.CacheManagement" autocomplete="off">
     <abp-modal id="CacheManagementEditModal">
         <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
 
