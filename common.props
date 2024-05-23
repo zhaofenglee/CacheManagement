@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
 		<LangVersion>latest</LangVersion>
-		<Version>8.2.0-rc.2</Version>
-		<VoloAbpPackageVersion>8.2.0-rc.2</VoloAbpPackageVersion>
+		<Version>8.2.0-rc.3</Version>
+		<VoloAbpPackageVersion>8.2.0-rc.3</VoloAbpPackageVersion>
 		<BlazoriseVersion>1.5.2</BlazoriseVersion>
 		<Description>Abp CacheManagement Module</Description>
 		<Authors>zhaofenglee</Authors>
