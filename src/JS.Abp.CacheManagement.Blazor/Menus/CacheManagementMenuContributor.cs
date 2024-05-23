@@ -28,13 +28,17 @@ public class CacheManagementMenuContributor : IMenuContributor
         //context.Menu.AddItem(new ApplicationMenuItem(CacheManagementMenus.Prefix, displayName: "CacheManagement", "/CacheManagement", icon: "fa fa-globe"));
         bool redisEnable = false;
         var redisEnabled = _configuration["Redis:IsEnabled"];
-        if (string.IsNullOrWhiteSpace(redisEnabled) || bool.Parse(redisEnabled))
+        if (string.IsNullOrWhiteSpace(redisEnabled))
         {
             var redisConfiguration = _configuration["Redis:Configuration"];
             if (!string.IsNullOrWhiteSpace(redisConfiguration))
             {
                 redisEnable = true;
             }
+        }
+        else
+        {
+            redisEnable = bool.Parse(_configuration["Redis:IsEnabled"]);
         }
         if (redisEnable)
         {

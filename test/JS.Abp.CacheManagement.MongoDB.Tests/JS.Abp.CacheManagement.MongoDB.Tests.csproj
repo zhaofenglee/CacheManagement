@@ -14,9 +14,6 @@
     <PackageReference Include="EphemeralMongo6.runtime.linux-x64" Version="1.1.3" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
     <PackageReference Include="EphemeralMongo6.runtime.osx-x64" Version="1.1.3" Condition="$([MSBuild]::IsOSPlatform('OSX'))" />
     <PackageReference Include="EphemeralMongo6.runtime.win-x64" Version="1.1.3" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\JS.Abp.CacheManagement.MongoDB\JS.Abp.CacheManagement.MongoDB.csproj" />
     <ProjectReference Include="..\JS.Abp.CacheManagement.Application.Tests\JS.Abp.CacheManagement.Application.Tests.csproj" />
   </ItemGroup>

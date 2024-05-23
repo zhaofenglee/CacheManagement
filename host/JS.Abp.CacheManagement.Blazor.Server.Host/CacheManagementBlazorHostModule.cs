@@ -8,14 +8,18 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using JS.Abp.CacheManagement.Blazor.Server.Host.Components;
 using JS.Abp.CacheManagement.Blazor.Server.Host.Menus;
+// using JS.Abp.CacheManagement.EntityFrameworkCore;
 using JS.Abp.CacheManagement.Localization;
 using JS.Abp.CacheManagement.MultiTenancy;
 using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
+using Volo.Abp.AspNetCore.Components.Server;
 using Volo.Abp.AspNetCore.Components.Server.BasicTheme;
 using Volo.Abp.AspNetCore.Components.Server.BasicTheme.Bundling;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
@@ -54,7 +58,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace JS.Abp.CacheManagement.Blazor.Server.Host;
 
 [DependsOn(
-    //typeof(CacheManagementEntityFrameworkCoreModule),
+    // typeof(CacheManagementEntityFrameworkCoreModule),
     typeof(CacheManagementApplicationModule),
     typeof(CacheManagementHttpApiModule),
     typeof(AbpAspNetCoreMvcUiBasicThemeModule),
@@ -63,6 +67,7 @@ namespace JS.Abp.CacheManagement.Blazor.Server.Host;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAccountApplicationModule),
+    typeof(AbpAccountHttpApiModule),
     typeof(AbpAspNetCoreComponentsServerBasicThemeModule),
     typeof(AbpIdentityApplicationModule),
     typeof(AbpIdentityEntityFrameworkCoreModule),
@@ -89,8 +94,8 @@ public class CacheManagementBlazorHostModule : AbpModule
         {
             options.AddAssemblyResource(
                 typeof(CacheManagementResource),
-                //typeof(CacheManagementDomainModule).Assembly,
-                //typeof(CacheManagementDomainSharedModule).Assembly,
+                // typeof(CacheManagementDomainModule).Assembly,
+                // typeof(CacheManagementDomainSharedModule).Assembly,
                 typeof(CacheManagementApplicationModule).Assembly,
                 typeof(CacheManagementApplicationContractsModule).Assembly,
                 typeof(CacheManagementBlazorHostModule).Assembly
@@ -106,6 +111,11 @@ public class CacheManagementBlazorHostModule : AbpModule
                 options.UseAspNetCore();
             });
         });
+
+        PreConfigure<AbpAspNetCoreComponentsWebOptions>(options =>
+        {
+            options.IsBlazorWebApp = true;
+        });
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -113,11 +123,20 @@ public class CacheManagementBlazorHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
+        // Add services to the container.
+        context.Services.AddRazorComponents()
+            .AddInteractiveServerComponents();
+
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
 
         Configure<AbpDbContextOptions>(options =>
         {
             options.UseSqlServer();
+        });
+
+        Configure<AbpMultiTenancyOptions>(options =>
+        {
+            options.IsEnabled = MultiTenancyConsts.IsEnabled;
         });
 
         Configure<AbpBundlingOptions>(options =>
@@ -138,7 +157,7 @@ public class CacheManagementBlazorHostModule : AbpModule
                 {
                     bundle.AddFiles("/blazor-global-styles.css");
                         //You can remove the following line if you don't use Blazor CSS isolation for components
-                        bundle.AddFiles("/JS.Abp.CacheManagement.Blazor.Server.Host.styles.css");
+                        bundle.AddFiles(new BundleFile("/JS.Abp.CacheManagement.Blazor.Server.Host.styles.css", true));
                 }
             );
         });
@@ -147,8 +166,8 @@ public class CacheManagementBlazorHostModule : AbpModule
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                //options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Domain.Shared", Path.DirectorySeparatorChar)));
-                //options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Domain", Path.DirectorySeparatorChar)));
+                // options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Domain.Shared", Path.DirectorySeparatorChar)));
+                // options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Domain", Path.DirectorySeparatorChar)));
                 options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Application.Contracts", Path.DirectorySeparatorChar)));
                 options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}JS.Abp.CacheManagement.Application", Path.DirectorySeparatorChar)));
                 options.FileSets.ReplaceEmbeddedByPhysical<CacheManagementBlazorHostModule>(hostingEnvironment.ContentRootPath);
@@ -171,8 +190,8 @@ public class CacheManagementBlazorHostModule : AbpModule
             options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
             options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
             options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
-            options.Languages.Add(new LanguageInfo("it", "it", "Italian", "it"));
+            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi"));
+            options.Languages.Add(new LanguageInfo("it", "it", "Italian"));
             options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
             options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português (Brasil)"));
             options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
@@ -208,7 +227,7 @@ public class CacheManagementBlazorHostModule : AbpModule
             Configure<AppUrlOptions>(options =>
             {
                 options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
-                options.RedirectAllowedUrls.AddRange(configuration["App:RedirectAllowedUrls"].Split(','));
+                options.RedirectAllowedUrls.AddRange(configuration["App:RedirectAllowedUrls"]?.Split(',') ?? Array.Empty<string>());
             });
 
 #if DEBUG
@@ -216,7 +235,7 @@ public class CacheManagementBlazorHostModule : AbpModule
 #endif
     }
 
-    public async override Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
+    public override async Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
     {
         var env = context.GetEnvironment();
         var app = context.GetApplicationBuilder();
@@ -246,13 +265,19 @@ public class CacheManagementBlazorHostModule : AbpModule
         }
 
         app.UseUnitOfWork();
+        app.UseAntiforgery();
         app.UseAuthorization();
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "CacheManagement API");
         });
-        app.UseConfiguredEndpoints();
+        app.UseConfiguredEndpoints(builder =>
+        {
+            builder.MapRazorComponents<App>()
+                .AddInteractiveServerRenderMode()
+                .AddAdditionalAssemblies(builder.ServiceProvider.GetRequiredService<IOptions<AbpRouterOptions>>().Value.AdditionalAssemblies.ToArray());
+        });
 
         using (var scope = context.ServiceProvider.CreateScope())
         {

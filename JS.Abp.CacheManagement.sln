@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.CacheManagement.Http
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.CacheManagement.Application.Tests", "test\JS.Abp.CacheManagement.Application.Tests\JS.Abp.CacheManagement.Application.Tests.csproj", "{AEEE63A0-AC82-46AE-AE2D-261FFCF1507E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS.Abp.CacheManagement.Blazor.Host.Client", "host\JS.Abp.CacheManagement.Blazor.Host.Client\JS.Abp.CacheManagement.Blazor.Host.Client.csproj", "{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{AEEE63A0-AC82-46AE-AE2D-261FFCF1507E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEEE63A0-AC82-46AE-AE2D-261FFCF1507E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEEE63A0-AC82-46AE-AE2D-261FFCF1507E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +152,7 @@ Global
 		{48D11AAB-AD26-46F9-BD34-0EE64B8F2FDB} = {CCD2960C-23CC-4AB4-B84D-60C7AAA52F4D}
 		{0572AF8C-727D-468A-8ECD-6CA53924CD29} = {CCD2960C-23CC-4AB4-B84D-60C7AAA52F4D}
 		{AEEE63A0-AC82-46AE-AE2D-261FFCF1507E} = {CCD2960C-23CC-4AB4-B84D-60C7AAA52F4D}
+		{23F1DA64-70C6-4C3C-AC5A-B5189160FAAC} = {E400416D-2895-4512-9D17-90681EEC7E0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB9B78FB-4F30-1794-15F4-D615ADA46FCA}

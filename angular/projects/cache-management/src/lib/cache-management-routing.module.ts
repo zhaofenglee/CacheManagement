@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DynamicLayoutComponent } from '@abp/ng.core';
+import { RouterOutletComponent } from '@abp/ng.core';
 import { Routes, RouterModule } from '@angular/router';
 import { CacheManagementComponent } from './components/cache-management.component';
 
@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: DynamicLayoutComponent,
+    component: RouterOutletComponent,
     children: [
       {
         path: '',
