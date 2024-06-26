@@ -34,7 +34,9 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.PermissionManagement.Identity;
+using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
+using Volo.Abp.SettingManagement.Web;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
@@ -56,6 +58,8 @@ namespace JS.Abp.CacheManagement;
     typeof(AbpAccountHttpApiModule),
     typeof(AbpEntityFrameworkCoreSqlServerModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
+    typeof(AbpSettingManagementWebModule),
+    typeof(AbpSettingManagementApplicationModule),
     typeof(AbpPermissionManagementEntityFrameworkCoreModule),
     typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpPermissionManagementHttpApiModule),
