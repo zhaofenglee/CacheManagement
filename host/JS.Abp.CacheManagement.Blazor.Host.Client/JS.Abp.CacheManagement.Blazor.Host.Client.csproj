@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    <RootNamespace>JS.Abp.CacheManagement.Blazor.Host.Client</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazorise.Bootstrap5" Version="$(BlazoriseVersion)" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="$(BlazoriseVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac.WebAssembly" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Blazor.WebAssembly" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Blazor.WebAssembly" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Blazor.WebAssembly" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JS.Abp.CacheManagement.Host.Shared\JS.Abp.CacheManagement.Host.Shared.csproj" />
+    <ProjectReference Include="..\..\src\JS.Abp.CacheManagement.Blazor.WebAssembly\JS.Abp.CacheManagement.Blazor.WebAssembly.csproj" />
+  </ItemGroup>
+
+</Project>

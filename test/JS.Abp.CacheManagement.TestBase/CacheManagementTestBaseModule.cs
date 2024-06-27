@@ -3,6 +3,7 @@ using Volo.Abp;
 using Volo.Abp.Authorization;
 using Volo.Abp.Autofac;
 using Volo.Abp.Data;
+using Volo.Abp.Guids;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
@@ -11,8 +12,9 @@ namespace JS.Abp.CacheManagement;
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpTestBaseModule),
-    typeof(AbpAuthorizationModule)
-    )]
+    typeof(AbpAuthorizationModule),
+    typeof(AbpGuidsModule)
+)]
 public class CacheManagementTestBaseModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

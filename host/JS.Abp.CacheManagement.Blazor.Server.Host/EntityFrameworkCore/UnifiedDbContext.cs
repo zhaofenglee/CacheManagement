@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+// using JS.Abp.CacheManagement.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
@@ -27,6 +28,6 @@ public class UnifiedDbContext : AbpDbContext<UnifiedDbContext>
         modelBuilder.ConfigureIdentity();
         modelBuilder.ConfigureFeatureManagement();
         modelBuilder.ConfigureTenantManagement();
-       // modelBuilder.ConfigureCacheManagement();
+        // modelBuilder.ConfigureCacheManagement();
     }
 }
