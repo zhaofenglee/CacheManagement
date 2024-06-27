@@ -2,232 +2,237 @@
 # yarn lockfile v1
 
 
-"@abp/aspnetcore.components.server.basictheme@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/aspnetcore.components.server.basictheme/-/aspnetcore.components.server.basictheme-8.2.0-rc.2.tgz#f3286bb3c37cafe9569773483d0577f4a6c83aa9"
-  integrity sha512-5LUiThUVpfjY0QySMYlW72Cs00B7KMOkpWPBwprzJtm6EBUOAMV/9SOwDZFJMlSUwp7w4GL4XQhfiGv2Qps6/w==
+"@abp/aspnetcore.components.server.basictheme@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/aspnetcore.components.server.basictheme/-/aspnetcore.components.server.basictheme-8.2.0.tgz"
+  integrity sha512-dqIy30QdKleRJLN/BRGqgasbGWVaPdod/HUk+O5MW8v+tmGpBQc3SET+2YjjMGQ1ODuwFirPcjLsX/Njuf2Nhw==
   dependencies:
-    "@abp/aspnetcore.components.server.theming" "~8.2.0-rc.2"
+    "@abp/aspnetcore.components.server.theming" "~8.2.0"
 
-"@abp/aspnetcore.components.server.theming@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/aspnetcore.components.server.theming/-/aspnetcore.components.server.theming-8.2.0-rc.2.tgz#0cc7fe030cd7cbb78a14962200ef64de292a0193"
-  integrity sha512-hBywbEfcQtMvZuvVp7f2PTYskzPNjPChwerO3PBWit9uV9bqbexpfrgu4dAm+tTkHjL/ptblYMg+qw7qYwQ57A==
+"@abp/aspnetcore.components.server.theming@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/aspnetcore.components.server.theming/-/aspnetcore.components.server.theming-8.2.0.tgz"
+  integrity sha512-/JQkOePRvY9DEXtXaXfTNxmZwu9HWT0ixLLt94Jt7LgxGmyO7esIgLwXgqC7EI/LF7KVWXTM7dE0hxGqpNX/qw==
   dependencies:
-    "@abp/bootstrap" "~8.2.0-rc.2"
-    "@abp/font-awesome" "~8.2.0-rc.2"
+    "@abp/bootstrap" "~8.2.0"
+    "@abp/font-awesome" "~8.2.0"
 
-"@abp/aspnetcore.mvc.ui.theme.basic@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-8.2.0-rc.2.tgz#207c6f1839375cdf256d63ec7b4542e5adbc933b"
-  integrity sha512-138jjpCa1ZWqCGK8FLo4+hjkheDp3JWLjlLvZ262DdkikMhq6ucrqznA+Qst/gpS+TBJTmKfZqoFEaIzX1XSSw==
+"@abp/aspnetcore.mvc.ui.theme.basic@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-8.2.0.tgz"
+  integrity sha512-9mnpImW7MazS+PT+Ci/wJ72NxHVSJfBUN8Mvi0XuRDUX6CLpgVfcWGZ19nSsd6Sgmq3oGKZafu26kS0krK3r4g==
   dependencies:
-    "@abp/aspnetcore.mvc.ui.theme.shared" "~8.2.0-rc.2"
+    "@abp/aspnetcore.mvc.ui.theme.shared" "~8.2.0"
 
-"@abp/aspnetcore.mvc.ui.theme.shared@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-8.2.0-rc.2.tgz#f3085f76fecf2cf789e46585026075c5f7a27208"
-  integrity sha512-XTsRHNPxIrPdMCZJp3mYxvMbSBqWrNJE9GJrWyD55DTpYzXCucW9bWDENjs8UychBViNXWqaKTLTTNmDJDACcg==
+"@abp/aspnetcore.mvc.ui.theme.shared@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-8.2.0.tgz"
+  integrity sha512-6iCo5+aSfhmAtKgBOLFNG7uKnOWv64RH8LwVPbMDVdjG+gKD96V+OunFLiG1p8Ta7Y+pip7PHWBKAqE3iC3Fag==
   dependencies:
-    "@abp/aspnetcore.mvc.ui" "~8.2.0-rc.2"
-    "@abp/bootstrap" "~8.2.0-rc.2"
-    "@abp/bootstrap-datepicker" "~8.2.0-rc.2"
-    "@abp/bootstrap-daterangepicker" "~8.2.0-rc.2"
-    "@abp/datatables.net-bs5" "~8.2.0-rc.2"
-    "@abp/font-awesome" "~8.2.0-rc.2"
-    "@abp/jquery-form" "~8.2.0-rc.2"
-    "@abp/jquery-validation-unobtrusive" "~8.2.0-rc.2"
-    "@abp/lodash" "~8.2.0-rc.2"
-    "@abp/luxon" "~8.2.0-rc.2"
-    "@abp/malihu-custom-scrollbar-plugin" "~8.2.0-rc.2"
-    "@abp/moment" "~8.2.0-rc.2"
-    "@abp/select2" "~8.2.0-rc.2"
-    "@abp/sweetalert2" "~8.2.0-rc.2"
-    "@abp/timeago" "~8.2.0-rc.2"
-    "@abp/toastr" "~8.2.0-rc.2"
+    "@abp/aspnetcore.mvc.ui" "~8.2.0"
+    "@abp/bootstrap" "~8.2.0"
+    "@abp/bootstrap-datepicker" "~8.2.0"
+    "@abp/bootstrap-daterangepicker" "~8.2.0"
+    "@abp/datatables.net-bs5" "~8.2.0"
+    "@abp/font-awesome" "~8.2.0"
+    "@abp/jquery-form" "~8.2.0"
+    "@abp/jquery-validation-unobtrusive" "~8.2.0"
+    "@abp/lodash" "~8.2.0"
+    "@abp/luxon" "~8.2.0"
+    "@abp/malihu-custom-scrollbar-plugin" "~8.2.0"
+    "@abp/moment" "~8.2.0"
+    "@abp/select2" "~8.2.0"
+    "@abp/sweetalert2" "~8.2.0"
+    "@abp/timeago" "~8.2.0"
+    "@abp/toastr" "~8.2.0"
 
-"@abp/aspnetcore.mvc.ui@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui/-/aspnetcore.mvc.ui-8.2.0-rc.2.tgz#1cdedf7d3a01a712ad59c4ce90c58d7acae073ea"
-  integrity sha512-ReyI7DUWniX45LynFPFN4wFokABPvQa7jfYn575MPs3Tqlxp+pv//M+3SUYzwBlKvOX1n43qNZzyloGWvEq23Q==
+"@abp/aspnetcore.mvc.ui@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/aspnetcore.mvc.ui/-/aspnetcore.mvc.ui-8.2.0.tgz"
+  integrity sha512-5Mu7TBDzXHBWqKMns2OVf2C5g1/038wz1XjsiaHANJ3b1iwHX1gt90nV5THK5yXRXxBjOUZnBE1TOj/jKAKEWQ==
   dependencies:
     ansi-colors "^4.1.1"
 
-"@abp/bootstrap-datepicker@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/bootstrap-datepicker/-/bootstrap-datepicker-8.2.0-rc.2.tgz#39d660a9fa3c3c50ba16a6b61ac83f119674d038"
-  integrity sha512-T7mu3k9JoxBUeAQABrxKGxHgd29HMqxZiWteCZOgSYLTGnNDAsD0vPbLTxPMWX/nH8U/sGDH2Esh9OpzJwpuzw==
+"@abp/bootstrap-datepicker@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/bootstrap-datepicker/-/bootstrap-datepicker-8.2.0.tgz"
+  integrity sha512-n4vVjeS2OOuFWrYHMJx1wQp7iyMgM/cofnQdAJy3S2U4cm72DeSCfOQN0LcxdyTlYAE+zGWexmzMAmDTJk/dGg==
   dependencies:
     bootstrap-datepicker "^1.9.0"
 
-"@abp/bootstrap-daterangepicker@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/bootstrap-daterangepicker/-/bootstrap-daterangepicker-8.2.0-rc.2.tgz#ded2fba7e44e90848fcead69a931383391666905"
-  integrity sha512-z3ejN8ank1PeOwzA1MkuFXVuUhZjJO1KATitaQShLMOW/yZITo4L1CXiftMrfavZ4tVHq6roqdO4xLGvYeE1Xg==
+"@abp/bootstrap-daterangepicker@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/bootstrap-daterangepicker/-/bootstrap-daterangepicker-8.2.0.tgz"
+  integrity sha512-+2Hahy66bgFi4t+2il6zfTunilg2ARyr52AOSkqH440xKcdIMEdLeCRHgWadJj6zKnWCmN4LXfvKWgMmWwhPbg==
   dependencies:
     bootstrap-daterangepicker "^3.1.0"
 
-"@abp/bootstrap@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/bootstrap/-/bootstrap-8.2.0-rc.2.tgz#fafcbdb90e8ad608d649f7500e249ff889f5bbd8"
-  integrity sha512-p57JSxPoi/KnABulBL95f95Zu4W0Ko+Mxr9jSJo/YV290X3BQT7rqD9bX3LbFl16LJFQwkjX0JGxIO4F+O9w3g==
+"@abp/bootstrap@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/bootstrap/-/bootstrap-8.2.0.tgz"
+  integrity sha512-+sNl5KzVi4f1+IAf/+jBwOzUEoqDKuvyOp9YZHOrTVyVj8inDXFCIUqGxTetVcTuD0loxVnHWgdUHetsFJvkJA==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     bootstrap "^5.1.3"
 
-"@abp/core@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/core/-/core-8.2.0-rc.2.tgz#9e13df24835a360ab6d3556d39268af3e7f81b88"
-  integrity sha512-5NgNULv98K1fRODmmvjUwaihgmOn1wmSpHcicofn9BG1CJBNCb7NxMsb1X/vFUoX1p8EoajjUcLgRjUItrV6Ag==
+"@abp/core@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/core/-/core-8.2.0.tgz"
+  integrity sha512-SzohDqNpby11B/teq9Su1zng19j2X8ifGVdIF5RYXPb/SZwO4+wqOpJL62ycVupKoB/wBk8X89NK7qrSE19rtg==
   dependencies:
-    "@abp/utils" "~8.2.0-rc.2"
+    "@abp/utils" "~8.2.0"
 
-"@abp/datatables.net-bs5@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/datatables.net-bs5/-/datatables.net-bs5-8.2.0-rc.2.tgz#6b4f2441ff4a5114065bbfec2a23977d9bc8f422"
-  integrity sha512-ydaMggwfhSbreBhq8mi21ooIl6hDDWSG72u2v9eTm54DyVDLNYFks1nXAV0DardD/1L+4fNArPloTRbBetwOhQ==
+"@abp/datatables.net-bs5@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/datatables.net-bs5/-/datatables.net-bs5-8.2.0.tgz"
+  integrity sha512-45icvFVaEoPqVXmrTbtHrLFU7Cb/QH/gFChcTTSET9l2rQWG1hM2F5t2GPu7Hct15tUmQKCco6rUM32m0uekFQ==
   dependencies:
-    "@abp/datatables.net" "~8.2.0-rc.2"
+    "@abp/datatables.net" "~8.2.0"
     datatables.net-bs5 "^1.11.4"
 
-"@abp/datatables.net@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/datatables.net/-/datatables.net-8.2.0-rc.2.tgz#c460670b76bbeb2883f18512484e68d51ace851b"
-  integrity sha512-Stw4XQqSvW4mCG2y0470ZUXRwoPCrQKUS49UCEwy5h12qv2IEuXJbE+9rd0R5pzlvlB2wgKz29dUOyir1hFmVw==
+"@abp/datatables.net@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/datatables.net/-/datatables.net-8.2.0.tgz"
+  integrity sha512-Uc+NPRaZdTl7rnFdPp3VtX/Fd0igRH3byaqKXAzX639a+aaI5mA2Utm0kMZFXYVoh7Hp8bYGP0W5pzdGWzk2Mg==
   dependencies:
-    "@abp/jquery" "~8.2.0-rc.2"
+    "@abp/jquery" "~8.2.0"
     datatables.net "^1.11.4"
 
-"@abp/font-awesome@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/font-awesome/-/font-awesome-8.2.0-rc.2.tgz#3ffe1b1169032e1fedde43a5a8c6ece6e5c95a4a"
-  integrity sha512-m+lOtgVospcfYJaB9c4llRJk6UZw2BBi0NZSegU62MXISNCVLB8HxR7X4I6BFcxkqWk2fI1hhUcKjnJg+TI8rQ==
+"@abp/font-awesome@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/font-awesome/-/font-awesome-8.2.0.tgz"
+  integrity sha512-uTPdfLZWV1lJGia2FTaBCC84w1NpBiVEHWF8cpn2EURBXRcBJAn4PZOBOQVs+qgW4QyawfjuaR57hKmOyRodWw==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     "@fortawesome/fontawesome-free" "^6.5.1"
 
-"@abp/jquery-form@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/jquery-form/-/jquery-form-8.2.0-rc.2.tgz#a5fb2ebbfc09479a7df1b672764c8695861e2b5c"
-  integrity sha512-Bk8Zwoyn4BKQw5bRNv6G89KeEMD01fbt0eR2/aGxJdzFhkQ3vb/1TDHqzwsPf/qt0xGVOrTqTNTvU2YaSvZqBA==
+"@abp/jquery-form@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/jquery-form/-/jquery-form-8.2.0.tgz"
+  integrity sha512-8pvNMTADbPzxsLGRFzePmMLa7ZZ1UWnvcVpP4aZMQ0lB356trbB5tH1Q/Kd7QeuqZS2LaejgVOG6NkZtk09sHQ==
   dependencies:
-    "@abp/jquery" "~8.2.0-rc.2"
+    "@abp/jquery" "~8.2.0"
     jquery-form "^4.3.0"
 
-"@abp/jquery-validation-unobtrusive@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-8.2.0-rc.2.tgz#bdb42b642c014b98dc43f473bfa6b9a72f5eecef"
-  integrity sha512-IFVhN3TS7Lcq0BAe8BZNd+LiL+UIfSSFlsqy36/Cu1LbtQtMBH8mMkWPi4SAj/sou0BMR3e6eLebcUK1qSu9MA==
+"@abp/jquery-validation-unobtrusive@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-8.2.0.tgz"
+  integrity sha512-JuuYQWnRghlm+i1gsMXpJafGDu3nUdKab3zZ3BTAR0TRnbHaqKzPudhW28nxPqyrLhlEFiWOxsIFAv2Zo3AYgQ==
   dependencies:
-    "@abp/jquery-validation" "~8.2.0-rc.2"
+    "@abp/jquery-validation" "~8.2.0"
     jquery-validation-unobtrusive "^3.2.12"
 
-"@abp/jquery-validation@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/jquery-validation/-/jquery-validation-8.2.0-rc.2.tgz#e26af8f90a415d97bb92d8776a97a40c6eafea7f"
-  integrity sha512-BFDB3k1s9di958ZZ6x/djIFhC7NE3SHOX8xB/NW345Cn2fjI+Fmg7IsvX6gL2B6WkjoFGduYxgw8LG7i7gIlfw==
+"@abp/jquery-validation@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/jquery-validation/-/jquery-validation-8.2.0.tgz"
+  integrity sha512-7NlsSARX1omJcTyDXsdK4RHy2Lr5bmIa/LiGniLbNSfsRQxupXVzt9pygRuq3j/4mPCbwf7qVUSld1rgznhyeg==
   dependencies:
-    "@abp/jquery" "~8.2.0-rc.2"
+    "@abp/jquery" "~8.2.0"
     jquery-validation "^1.19.3"
 
-"@abp/jquery@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/jquery/-/jquery-8.2.0-rc.2.tgz#05c1f46ff7bf74f58b800c226b1366ea8da34566"
-  integrity sha512-yeVCQRv8E5vznbT4Nzev2F77GymdNETkUiXTETgOIm8+ysJJYTx0gtqvuwyd0KQTAFnIqT3d0ZK9fA/gbdUMVA==
+"@abp/jquery@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/jquery/-/jquery-8.2.0.tgz"
+  integrity sha512-ow/A7a8b5FVRolMlOKPVaJsizmm8VjOr+g3LG3/Sj6Zvebx+j4YLXlUEfCl8FmEj2jjh5Q3hsKQwp1HW/S+FXA==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     jquery "~3.6.0"
 
-"@abp/lodash@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/lodash/-/lodash-8.2.0-rc.2.tgz#2e07c28a3a40729569f5f34f50a328832d18c24c"
-  integrity sha512-DgE6117E+Bwc4thEXgJ5WxGJrS7VronjfBmkOn/CXa8PIqhKBw2iAD9LvP45yjN5uWAaUKpEqG3WnGgCK1fsig==
+"@abp/lodash@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/lodash/-/lodash-8.2.0.tgz"
+  integrity sha512-YqCT3idDmeMTUr0RjTtobpTXazkm3kSMdzmFsQvp31sC5eyXDb7/SQip0OP4c3/co2CYhH/vwX5mbAmzDazY3w==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     lodash "^4.17.21"
 
-"@abp/luxon@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/luxon/-/luxon-8.2.0-rc.2.tgz#403165a5db5d9e3ddb4b56da956ade069edefd35"
-  integrity sha512-+f1HKJH7dfD86xs+c1sYVFZRIQSXdm30UaIMB0fy0lQ9CWthQvNQgxbL5CQTepc4HQvRvHhAdsS+i9cbHX50VQ==
+"@abp/luxon@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/luxon/-/luxon-8.2.0.tgz"
+  integrity sha512-n11g3IcqE3bpzL06hpYSceQksNz8fowRceu8lJvw2Vo6STNPlL0Kv5awf8qxUcX27XOkE8t8UTBzAERLXZzyCQ==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     luxon "^2.3.0"
 
-"@abp/malihu-custom-scrollbar-plugin@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-8.2.0-rc.2.tgz#c032072103da9d70f38fc76f51d13944e36e352d"
-  integrity sha512-bEB8iH+8+u1K6R7qmK19q+rLSr5oT3T8/VJeyeyliTPV19bnYFcTTD8kWMc9Q3LUlO0xAlY+86Igc9hEuAvV8g==
+"@abp/malihu-custom-scrollbar-plugin@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-8.2.0.tgz"
+  integrity sha512-ALnvSVnzW1q2BVjkGOlgU/fp4VJME7PZWOD/DozAuh1aBKKR9ElR5T54Uf9HQrB53sRaPchHBl9usIOZ0WDqWQ==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     malihu-custom-scrollbar-plugin "^3.1.5"
 
-"@abp/moment@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/moment/-/moment-8.2.0-rc.2.tgz#a96167c936262248945899107147a3a0e8ca571a"
-  integrity sha512-IVy9mR2y8Mc7IFn5a8fV94NgMUBB1gWhsl32ojcvb9IA5mOJCFwAFVQcf9EdjgizotjpdfMZhVYBkJVljuSFew==
+"@abp/moment@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/moment/-/moment-8.2.0.tgz"
+  integrity sha512-pg5LKOXCOe9ncoYCSWzvmPBH2VSVi+6CtmWnfcI23ir07PmAk5zmfNvDdkkBFsALxi5Ypq1UWH45o+a6FteHpQ==
   dependencies:
     moment "^2.9.0"
 
-"@abp/select2@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/select2/-/select2-8.2.0-rc.2.tgz#82234a5bc3ee5817498c285bef37fda849f3bce4"
-  integrity sha512-y/RRI4mfFD6WsKldsEIyFQHPiqtYSHu7ZNbmSALPa7j9FPIN1gXUHBREhp7nSFMF5psFSIwEgjkuZUCma4G62g==
+"@abp/select2@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/select2/-/select2-8.2.0.tgz"
+  integrity sha512-TQJLRrfEJsDnp7n0OHKMyNF0Um+O4b7AvRhiVz8opiuAIpaFXQRp02/UuMBX9h7SQUWNONXEqKmLvKdyEIhLAA==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     select2 "^4.0.13"
 
-"@abp/sweetalert2@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/sweetalert2/-/sweetalert2-8.2.0-rc.2.tgz#7479015294fdda8dba5e771104cbb1f58b5768aa"
-  integrity sha512-boC1wvaGyf2STRsUk4Bw1k3bwM432KWMHcwrU6TlmZ+USEpomclJ8401hxaLAcpWGlCQ0Edx3+bKDZsmDmrxQw==
+"@abp/sweetalert2@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/sweetalert2/-/sweetalert2-8.2.0.tgz"
+  integrity sha512-3w/bsEdV5B1Y288wVJa3CrkYASDqwwpuzjCk9g8Foe0xlc7TNs/X9HAm/PeDpdt8glxnxnvnN/zKJOtnFNRgWg==
   dependencies:
-    "@abp/core" "~8.2.0-rc.2"
+    "@abp/core" "~8.2.0"
     sweetalert2 "^11.3.6"
 
-"@abp/timeago@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/timeago/-/timeago-8.2.0-rc.2.tgz#f7d31e86db99f801b8e17c36a8d16e7603d25a0e"
-  integrity sha512-S6jjnMTmnRBLQCjygHsFNeot7a3n3IBxJ3/epcQ9l/CNy5zdB9D37Sdmgu/1eLe2UzLjFusnB2iD7SRoIh2N2Q==
+"@abp/timeago@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/timeago/-/timeago-8.2.0.tgz"
+  integrity sha512-Vwo7Y6m/9CGBcjqLQ/S6lyP27Ilf8ThB7B5QYYlKA5yAL/VqrRaElYmJ8g9+MH7elMuGPvfCnjlPYcBfP2anuQ==
   dependencies:
-    "@abp/jquery" "~8.2.0-rc.2"
+    "@abp/jquery" "~8.2.0"
     timeago "^1.6.7"
 
-"@abp/toastr@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/toastr/-/toastr-8.2.0-rc.2.tgz#4cca98523cee2a260bf0f939a4e655c3ea85648e"
-  integrity sha512-1xoL+Bx8yoBzUuuV+HJZo0FJNZW2p9Dkw8z6JND3bI77ZyWEi1flBDn+tyd9mnEhlioR4FYiNjT090vUTyhFlA==
+"@abp/toastr@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/toastr/-/toastr-8.2.0.tgz"
+  integrity sha512-v0nKkP1PLIH92aTHOg/D6TgH65omMgQ30Ujamx2DU4yiRX5Z/2ZJNyO5//9mvmCt8hGXrqVJZwRLVKI/t7UV8A==
   dependencies:
-    "@abp/jquery" "~8.2.0-rc.2"
+    "@abp/jquery" "~8.2.0"
     toastr "^2.1.4"
 
-"@abp/utils@~8.2.0-rc.2":
-  version "8.2.0-rc.2"
-  resolved "https://registry.npmmirror.com/@abp/utils/-/utils-8.2.0-rc.2.tgz#0b9df9c8b46e35800a7621cce165224246516ceb"
-  integrity sha512-GprOEn5m/5MoSpq3lIm0w0Q5jwc71HIh3NXkhs4Pf4OLG2KdLXHPvy9xaG+ZVV7tG+brAZ+p1M35KHO+Bk3otA==
+"@abp/utils@~8.2.0":
+  version "8.2.0"
+  resolved "https://registry.npmmirror.com/@abp/utils/-/utils-8.2.0.tgz"
+  integrity sha512-47WX1bNId6KEm9Se4BJmd3dQXDscYB878RTABXnOmB018QSNQjJFwp8dR0E9I5ZaXRUcBetrpkHku6OyXr/gXw==
   dependencies:
     just-compare "^2.3.0"
 
 "@fortawesome/fontawesome-free@^6.5.1":
   version "6.5.2"
-  resolved "https://registry.npmmirror.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.5.2.tgz#310fe90cb5a8dee9698833171b98e7835404293d"
+  resolved "https://registry.npmmirror.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.5.2.tgz"
   integrity sha512-hRILoInAx8GNT5IMkrtIt9blOdrqHOnPBH+k70aWUAqPZPgopb9G5EQJFpaBx/S8zp2fC+mPW349Bziuk1o28Q==
+
+"@popperjs/core@^2.11.8":
+  version "2.11.8"
+  resolved "https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
 ansi-colors@^4.1.1:
   version "4.1.3"
-  resolved "https://registry.npmmirror.com/ansi-colors/-/ansi-colors-4.1.3.tgz#37611340eb2243e70cc604cad35d63270d48781b"
+  resolved "https://registry.npmmirror.com/ansi-colors/-/ansi-colors-4.1.3.tgz"
   integrity sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==
 
 bootstrap-datepicker@^1.9.0:
   version "1.10.0"
-  resolved "https://registry.npmmirror.com/bootstrap-datepicker/-/bootstrap-datepicker-1.10.0.tgz#61612bbe8bf0a69a5bce32bbcdda93ebb6ccf24a"
+  resolved "https://registry.npmmirror.com/bootstrap-datepicker/-/bootstrap-datepicker-1.10.0.tgz"
   integrity sha512-lWxtSYddAQOpbAO8UhYhHLcK6425eWoSjb5JDvZU3ePHEPF6A3eUr51WKaFy4PccU19JRxUG6wEU3KdhtKfvpg==
   dependencies:
     jquery ">=3.4.0 <4.0.0"
 
 bootstrap-daterangepicker@^3.1.0:
   version "3.1.0"
-  resolved "https://registry.npmmirror.com/bootstrap-daterangepicker/-/bootstrap-daterangepicker-3.1.0.tgz#632e6fb2de4b6360c5c0a9d5f6adb9aace051fe8"
+  resolved "https://registry.npmmirror.com/bootstrap-daterangepicker/-/bootstrap-daterangepicker-3.1.0.tgz"
   integrity sha512-oaQZx6ZBDo/dZNyXGVi2rx5GmFXThyQLAxdtIqjtLlYVaQUfQALl5JZMJJZzyDIX7blfy4ppZPAJ10g8Ma4d/g==
   dependencies:
     jquery ">=1.10"
@@ -235,106 +240,101 @@ bootstrap-daterangepicker@^3.1.0:
 
 bootstrap@^5.1.3:
   version "5.3.3"
-  resolved "https://registry.npmmirror.com/bootstrap/-/bootstrap-5.3.3.tgz#de35e1a765c897ac940021900fcbb831602bac38"
+  resolved "https://registry.npmmirror.com/bootstrap/-/bootstrap-5.3.3.tgz"
   integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
 
 datatables.net-bs5@^1.11.4:
   version "1.13.11"
-  resolved "https://registry.npmmirror.com/datatables.net-bs5/-/datatables.net-bs5-1.13.11.tgz#c7c23aaf37e9fdd1274e172845ad29c9c9d78bb8"
+  resolved "https://registry.npmmirror.com/datatables.net-bs5/-/datatables.net-bs5-1.13.11.tgz"
   integrity sha512-NQO15TjXo4xvZ0jReC4Uf86ezbQzPQPdaN2YncrCPhzQ6fx+2WD7DUq4ur0HbAcYHo94/M+MtD5Ch29To7Rj3Q==
   dependencies:
     datatables.net "1.13.11"
     jquery "1.8 - 4"
 
-datatables.net@1.13.11, datatables.net@^1.11.4:
+datatables.net@^1.11.4, datatables.net@1.13.11:
   version "1.13.11"
-  resolved "https://registry.npmmirror.com/datatables.net/-/datatables.net-1.13.11.tgz#e2a4c8b50553512f241ebfcbc078d74d551183b2"
+  resolved "https://registry.npmmirror.com/datatables.net/-/datatables.net-1.13.11.tgz"
   integrity sha512-AE6RkMXziRaqzPcu/pl3SJXeRa6fmXQG/fVjuRESujvkzqDCYEeKTTpPMuVJSGYJpPi32WGSphVNNY1G4nSN/g==
   dependencies:
     jquery "1.8 - 4"
 
 jquery-form@^4.3.0:
   version "4.3.0"
-  resolved "https://registry.npmmirror.com/jquery-form/-/jquery-form-4.3.0.tgz#7d3961c314a1f2d15298f4af1d3943f54f4149c6"
+  resolved "https://registry.npmmirror.com/jquery-form/-/jquery-form-4.3.0.tgz"
   integrity sha512-q3uaVCEWdLOYUCI6dpNdwf/7cJFOsUgdpq6r0taxtGQ5NJSkOzofyWm4jpOuJ5YxdmL1FI5QR+q+HB63HHLGnQ==
   dependencies:
     jquery ">=1.7.2"
 
 jquery-mousewheel@>=3.0.6:
   version "3.1.13"
-  resolved "https://registry.npmmirror.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
+  resolved "https://registry.npmmirror.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz"
   integrity sha512-GXhSjfOPyDemM005YCEHvzrEALhKDIswtxSHSR2e4K/suHVJKJxxRCGz3skPjNxjJjQa9AVSGGlYjv1M3VLIPg==
 
 jquery-validation-unobtrusive@^3.2.12:
   version "3.2.12"
-  resolved "https://registry.npmmirror.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.12.tgz#1d52841f653e516525c251e494b042e664dad8af"
+  resolved "https://registry.npmmirror.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.12.tgz"
   integrity sha512-kPixGhVcuat7vZXngGFfSIksy4VlzZcHyRgnBIZdsfVneCU+D5sITC8T8dD/9c9K/Q+qkMlgp7ufJHz93nKSuQ==
   dependencies:
     jquery "^3.5.1"
     jquery-validation ">=1.16"
 
-jquery-validation@>=1.16, jquery-validation@^1.19.3:
-  version "1.20.0"
-  resolved "https://registry.npmmirror.com/jquery-validation/-/jquery-validation-1.20.0.tgz#dbff6d8fe61b07d4b6f844bf2f5405146556b991"
-  integrity sha512-c8tg4ltIIP6L7l0bZ79sRzOJYquyjS48kQZ6iv8MJ2r0OYztxtkWYKTReZyU2/zVFYiINB29i0Z/IRNNuJQN1g==
+jquery-validation@^1.19.3, jquery-validation@>=1.16:
+  version "1.20.1"
+  resolved "https://registry.npmmirror.com/jquery-validation/-/jquery-validation-1.20.1.tgz"
+  integrity sha512-rbBy36Xe5WBCO8OLdZLhPhVjb70KayuoX3WYRNwNpy9TXuUadhNTcaipr6jEIacn+V4jgXB2xUJl6hYzJxr5jw==
 
-"jquery@1.8 - 4", jquery@>=1.10, jquery@>=1.12.0, "jquery@>=1.5.0 <4.0", jquery@>=1.7.2, "jquery@>=3.4.0 <4.0.0", jquery@^3.5.1:
-  version "3.7.1"
-  resolved "https://registry.npmmirror.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
-  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
-
-jquery@~3.6.0:
+"jquery@^1.7 || ^2.0 || ^3.1", jquery@^3.5.1, jquery@>=1.10, jquery@>=1.12.0, "jquery@>=1.5.0 <4.0", jquery@>=1.7.2, "jquery@>=3.4.0 <4.0.0", jquery@~3.6.0, "jquery@1.8 - 4":
   version "3.6.4"
-  resolved "https://registry.npmmirror.com/jquery/-/jquery-3.6.4.tgz#ba065c188142100be4833699852bf7c24dc0252f"
+  resolved "https://registry.npmmirror.com/jquery/-/jquery-3.6.4.tgz"
   integrity sha512-v28EW9DWDFpzcD9O5iyJXg3R3+q+mET5JhnjJzQUZMHOv67bpSIHq81GEYpPNZHG+XXHsfSme3nxp/hndKEcsQ==
 
 just-compare@^2.3.0:
   version "2.3.0"
-  resolved "https://registry.npmmirror.com/just-compare/-/just-compare-2.3.0.tgz#a2adcc1d1940536263275f5a1ef1298bcacfeda7"
+  resolved "https://registry.npmmirror.com/just-compare/-/just-compare-2.3.0.tgz"
   integrity sha512-6shoR7HDT+fzfL3gBahx1jZG3hWLrhPAf+l7nCwahDdT9XDtosB9kIF0ZrzUp5QY8dJWfQVr5rnsPqsbvflDzg==
 
 lodash@^4.17.21:
   version "4.17.21"
-  resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 luxon@^2.3.0:
   version "2.5.2"
-  resolved "https://registry.npmmirror.com/luxon/-/luxon-2.5.2.tgz#17ed497f0277e72d58a4756d6a9abee4681457b6"
+  resolved "https://registry.npmmirror.com/luxon/-/luxon-2.5.2.tgz"
   integrity sha512-Yg7/RDp4nedqmLgyH0LwgGRvMEKVzKbUdkBYyCosbHgJ+kaOUx0qzSiSatVc3DFygnirTPYnMM2P5dg2uH1WvA==
 
 malihu-custom-scrollbar-plugin@^3.1.5:
   version "3.1.5"
-  resolved "https://registry.npmmirror.com/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz#310cecc5e59415a1c29e9dfb5d2b6e01d66a29ef"
+  resolved "https://registry.npmmirror.com/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz"
   integrity sha512-lwW3LgI+CNDMPnP4ED2la6oYxWMkCXlnhex+s2wuOLhFDFGnGmQuTQVdRK9bvDLpxs10sGlfErVufJy9ztfgJQ==
   dependencies:
     jquery-mousewheel ">=3.0.6"
 
 moment@^2.9.0:
   version "2.30.1"
-  resolved "https://registry.npmmirror.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  resolved "https://registry.npmmirror.com/moment/-/moment-2.30.1.tgz"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
 select2@^4.0.13:
   version "4.0.13"
-  resolved "https://registry.npmmirror.com/select2/-/select2-4.0.13.tgz#0dbe377df3f96167c4c1626033e924372d8ef44d"
+  resolved "https://registry.npmmirror.com/select2/-/select2-4.0.13.tgz"
   integrity sha512-1JeB87s6oN/TDxQQYCvS5EFoQyvV6eYMZZ0AeA4tdFDYWN3BAGZ8npr17UBFddU0lgAt3H0yjX3X6/ekOj1yjw==
 
 sweetalert2@^11.3.6:
-  version "11.11.0"
-  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.11.0.tgz#0bbae4330f5e423c942639bb0e9dc2d748eb88fd"
-  integrity sha512-wKCTtoE6lQVDKaJ5FFq+znk/YykJmJlD8RnLZps8C7DyivctCoRlVeeOwnKfgwKS+QJYon7s++3dmNi3/am1tw==
+  version "11.12.0"
+  resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.12.0.tgz"
+  integrity sha512-Fe6sitTNReNdPF1q1w4uz1GAVv9acZff9Q7YILH5n6O/ti3MzwgfEA0aQ6tLjpy+O1NLXnZjUE//xrbluGXzJw==
 
 timeago@^1.6.7:
   version "1.6.7"
-  resolved "https://registry.npmmirror.com/timeago/-/timeago-1.6.7.tgz#afd467c29a911e697fc22a81888c7c3022783cb5"
+  resolved "https://registry.npmmirror.com/timeago/-/timeago-1.6.7.tgz"
   integrity sha512-FikcjN98+ij0siKH4VO4dZ358PR3oDDq4Vdl1+sN9gWz1/+JXGr3uZbUShYH/hL7bMhcTpPbplJU5Tej4b4jbQ==
   dependencies:
     jquery ">=1.5.0 <4.0"
 
 toastr@^2.1.4:
   version "2.1.4"
-  resolved "https://registry.npmmirror.com/toastr/-/toastr-2.1.4.tgz#8b43be64fb9d0c414871446f2db8e8ca4e95f181"
+  resolved "https://registry.npmmirror.com/toastr/-/toastr-2.1.4.tgz"
   integrity sha512-LIy77F5n+sz4tefMmFOntcJ6HL0Fv3k1TDnNmFZ0bU/GcvIIfy6eG2v7zQmMiYgaalAiUv75ttFrPn5s0gyqlA==
   dependencies:
     jquery ">=1.12.0"
