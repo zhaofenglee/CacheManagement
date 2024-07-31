@@ -114,9 +114,20 @@
     });
 
     $("#CleanAllCache").click(function (e) {
-        cacheManagementService.clearAll().done(function () {
-            $('#DirectoryTree').jstree("refresh");
-            dataTable.ajax.reloadEx();
-        });
+        abp.message.confirm(
+            abp.localization.localize('AreYouSureToDelete', 'CacheManagement'),
+            undefined,
+            (isConfirmed) => {
+                if (isConfirmed) {
+                    abp.ui.setBusy();
+                    cacheManagementService.clearAll().done(function () {
+                        $('#DirectoryTree').jstree("refresh");
+                        dataTable.ajax.reloadEx();
+                    });
+                    abp.ui.clearBusy();
+                }
+            }
+        );
+        
     });
 })
