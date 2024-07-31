@@ -3,10 +3,11 @@
 @using JS.Abp.CacheManagement.CacheItems
 @using JS.Abp.CacheManagement.Permissions
 @using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Components.Messages
 
 @inherits CacheManagementComponentBase
 @inject ICacheItemAppService CacheItemAppService
-
+@inject IUiMessageService UiMessageService
 <h3>@L["CacheManagement"]</h3>
 <link href="_content/Blazorise.TreeView/blazorise.treeview.css" rel="stylesheet"/>
 <Row>
@@ -284,10 +285,17 @@
     {
         try
         {
-            await CacheItemAppService.ClearAllAsync();
-            await GetCacheGroupsAsync();
-            await GetCacheItemsAsync();
-            await InvokeAsync(StateHasChanged);
+            if (await UiMessageService.Confirm(L["AreYouSureToDelete"]))
+            {
+                await InvokeAsync(async () =>
+                {
+                    await CacheItemAppService.ClearAllAsync();
+                    await GetCacheGroupsAsync();
+                    await GetCacheItemsAsync();
+                    await InvokeAsync(StateHasChanged);
+                });
+            }
+           
         }
         catch (Exception ex)
         {
@@ -299,10 +307,17 @@
     {
         try
         {
-            await CacheItemAppService.DeleteAsync(EditCacheItemData.CacheKey);
-            await GetCacheItemsAsync();
-            await InvokeAsync(StateHasChanged);
-            await CloseShowCacheModalAsync();
+            if (await UiMessageService.Confirm(L["AreYouSureToDelete"]))
+            {
+                await InvokeAsync(async () =>
+                {
+                    await CacheItemAppService.DeleteAsync(EditCacheItemData.CacheKey);
+                    await GetCacheItemsAsync();
+                    await InvokeAsync(StateHasChanged);
+                    await CloseShowCacheModalAsync();
+                });
+            }
+        
         }
         catch (Exception ex)
         {
