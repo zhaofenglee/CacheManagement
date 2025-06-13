@@ -13,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\JS.Abp.CacheManagement.Blazor.WebAssembly.Bundling\JS.Abp.CacheManagement.Blazor.WebAssembly.Bundling.csproj" />
         <ProjectReference Include="..\JS.Abp.CacheManagement.Blazor\JS.Abp.CacheManagement.Blazor.csproj" />
         <ProjectReference Include="..\JS.Abp.CacheManagement.HttpApi.Client\JS.Abp.CacheManagement.HttpApi.Client.csproj" />
     </ItemGroup>
