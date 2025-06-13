@@ -207,8 +207,16 @@ public class CacheItemAppService : ApplicationService, ICacheItemAppService
 
     protected virtual string GetNormalizedKey(CacheItem cacheItem, string cacheKey)
     {
-        return _keyNormalizer.NormalizeKey(new DistributedCacheKeyNormalizeArgs(cacheKey, cacheItem.CacheName,
-            cacheItem.IgnoreMultiTenancy));
+        var normalizedKey = $"c:{cacheItem.CacheName},k:*{cacheKey}";
+
+        if (!cacheItem.IgnoreMultiTenancy && CurrentTenant.Id.HasValue)
+        {
+            normalizedKey = $"t:{CurrentTenant.Id.Value},{normalizedKey}";
+        }
+
+        return normalizedKey;
+        /*return _keyNormalizer.NormalizeKey(new DistributedCacheKeyNormalizeArgs(cacheKey, cacheItem.CacheName,
+            cacheItem.IgnoreMultiTenancy));*/
     }
     [Authorize(CacheManagementPermissions.CacheManagement.Delete)]
     public async Task DeleteAsync(string cacheKey)
