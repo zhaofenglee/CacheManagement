@@ -4,18 +4,18 @@ using JS.Abp.CacheManagement.Localization;
 using JS.Abp.CacheManagement.Web.Menus;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using JS.Abp.CacheManagement.Permissions;
+using Volo.Abp.Mapperly;
 
 namespace JS.Abp.CacheManagement.Web;
 
 [DependsOn(
     typeof(CacheManagementApplicationContractsModule),
     typeof(AbpAspNetCoreMvcUiThemeSharedModule),
-    typeof(AbpAutoMapperModule)
+    typeof(AbpMapperlyModule)
     )]
 public class CacheManagementWebModule : AbpModule
 {
@@ -45,11 +45,7 @@ public class CacheManagementWebModule : AbpModule
             options.FileSets.AddEmbedded<CacheManagementWebModule>();
         });
 
-        context.Services.AddAutoMapperObjectMapper<CacheManagementWebModule>();
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<CacheManagementWebModule>(validate: true);
-        });
+        context.Services.AddMapperlyObjectMapper<CacheManagementWebModule>();
 
         Configure<RazorPagesOptions>(options =>
         {

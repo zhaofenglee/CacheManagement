@@ -3,14 +3,14 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>JS.Abp.CacheManagement</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Mapperly" Version="$(VoloAbpPackageVersion)" />
 	<PackageReference Include="Volo.Abp.Ddd.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="$(VoloAbpPackageVersion)" />
     <ProjectReference Include="..\JS.Abp.CacheManagement.Application.Contracts\JS.Abp.CacheManagement.Application.Contracts.csproj" />

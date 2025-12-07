@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using Volo.Abp.Caching.StackExchangeRedis;
+using Volo.Abp.Mapperly;
 
 namespace JS.Abp.CacheManagement;
 
@@ -10,17 +10,13 @@ namespace JS.Abp.CacheManagement;
     //typeof(CacheManagementDomainModule),
     typeof(CacheManagementApplicationContractsModule),
     typeof(AbpDddApplicationModule),
-    typeof(AbpAutoMapperModule),
+    typeof(AbpMapperlyModule),
     typeof(AbpCachingStackExchangeRedisModule)
     )]
 public class CacheManagementApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddAutoMapperObjectMapper<CacheManagementApplicationModule>();
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<CacheManagementApplicationModule>(validate: true);
-        });
+        context.Services.AddMapperlyObjectMapper<CacheManagementApplicationModule>();
     }
 }
