@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CacheManagementService } from '../services/cache-management.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { CacheManagementService } from '../services/cache-management.service';
   styles: [],
 })
 export class CacheManagementComponent implements OnInit {
-  constructor(private service: CacheManagementService) {}
+  private service = inject(CacheManagementService);
 
   ngOnInit(): void {
     this.service.sample().subscribe(console.log);

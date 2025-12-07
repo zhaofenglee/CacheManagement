@@ -29,7 +29,6 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.FeatureManagement;
@@ -101,7 +100,7 @@ public class CacheManagementWebHostModule : AbpModule
         ConfigureCache(configuration);
         ConfigureUrls(configuration);
         ConfigureAuthentication(context, configuration);
-        ConfigureAutoMapper();
+        context.Services.AddMapperlyObjectMapper<CacheManagementWebHostModule>();
         ConfigureVirtualFileSystem(hostingEnvironment);
         ConfigureSwaggerServices(context.Services);
         ConfigureMultiTenancy();
@@ -168,14 +167,7 @@ public class CacheManagementWebHostModule : AbpModule
                 options.Scope.Add("CacheManagement");
             });
     }
-
-    private void ConfigureAutoMapper()
-    {
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<CacheManagementWebHostModule>();
-        });
-    }
+    
 
     private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
     {

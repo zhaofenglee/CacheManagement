@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44357/',
+    issuer: 'https://localhost:44376/',
     redirectUri: baseUrl,
     clientId: 'CacheManagement_App',
     responseType: 'code',
@@ -19,11 +19,11 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44357',
+      url: 'https://localhost:44376',
       rootNamespace: 'JS.Abp.CacheManagement',
     },
     CacheManagement: {
-      url: 'https://localhost:44349',
+      url: 'https://localhost:44331',
       rootNamespace: 'JS.Abp.CacheManagement',
     },
   },

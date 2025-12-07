@@ -1,6 +1,8 @@
 {
   "extends": "./tsconfig.prod.json",
   "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "paths": {
       "@j-s.Abp/cache-management": [
         "projects/cache-management/src/public-api.ts"
