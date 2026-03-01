@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using JS.Abp.CacheManagement.EntityFrameworkCore;
 using JS.Abp.CacheManagement.MultiTenancy;
 using JS.Abp.CacheManagement.Web;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
 using Volo.Abp.Account;
