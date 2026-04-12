@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace JS.Abp.CacheManagement.Migrations
+namespace JS.Abp.CacheManagement.Blazor.Server.Host.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -211,8 +211,10 @@ namespace JS.Abp.CacheManagement.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GroupName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    GroupName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ResourceName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ManagementPermissionName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
                     ParentName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
                     DisplayName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     IsEnabled = table.Column<bool>(type: "bit", nullable: false),
@@ -224,6 +226,23 @@ namespace JS.Abp.CacheManagement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AbpPermissions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbpResourcePermissionGrants",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    ResourceName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    ResourceKey = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpResourcePermissionGrants", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -393,6 +412,8 @@ namespace JS.Abp.CacheManagement.Migrations
                     ShouldChangePasswordOnNextLogin = table.Column<bool>(type: "bit", nullable: false),
                     EntityVersion = table.Column<int>(type: "int", nullable: false),
                     LastPasswordChangeTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastSignInTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Leaved = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -444,7 +465,7 @@ namespace JS.Abp.CacheManagement.Migrations
                     ChangeType = table.Column<byte>(type: "tinyint", nullable: false),
                     EntityTenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     EntityId = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
-                    EntityTypeFullName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    EntityTypeFullName = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -595,6 +616,46 @@ namespace JS.Abp.CacheManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpUserPasskeys",
+                columns: table => new
+                {
+                    CredentialId = table.Column<byte[]>(type: "varbinary(1024)", maxLength: 1024, nullable: false),
+                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Data = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpUserPasskeys", x => x.CredentialId);
+                    table.ForeignKey(
+                        name: "FK_AbpUserPasskeys_AbpUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbpUserPasswordHistories",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpUserPasswordHistories", x => new { x.UserId, x.Password });
+                    table.ForeignKey(
+                        name: "FK_AbpUserPasswordHistories_AbpUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpUserRoles",
                 columns: table => new
                 {
@@ -650,7 +711,7 @@ namespace JS.Abp.CacheManagement.Migrations
                     NewValue = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
                     OriginalValue = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
                     PropertyName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    PropertyTypeFullName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false)
+                    PropertyTypeFullName = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -763,10 +824,18 @@ namespace JS.Abp.CacheManagement.Migrations
                 column: "GroupName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpPermissions_Name",
+                name: "IX_AbpPermissions_ResourceName_Name",
                 table: "AbpPermissions",
-                column: "Name",
-                unique: true);
+                columns: new[] { "ResourceName", "Name" },
+                unique: true,
+                filter: "[ResourceName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpResourcePermissionGrants_TenantId_Name_ResourceName_ResourceKey_ProviderName_ProviderKey",
+                table: "AbpResourcePermissionGrants",
+                columns: new[] { "TenantId", "Name", "ResourceName", "ResourceKey", "ProviderName", "ProviderKey" },
+                unique: true,
+                filter: "[TenantId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpRoleClaims_RoleId",
@@ -852,6 +921,11 @@ namespace JS.Abp.CacheManagement.Migrations
                 columns: new[] { "UserId", "OrganizationUnitId" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AbpUserPasskeys_UserId",
+                table: "AbpUserPasskeys",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AbpUserRoles_RoleId_UserId",
                 table: "AbpUserRoles",
                 columns: new[] { "RoleId", "UserId" });
@@ -917,6 +991,9 @@ namespace JS.Abp.CacheManagement.Migrations
                 name: "AbpPermissions");
 
             migrationBuilder.DropTable(
+                name: "AbpResourcePermissionGrants");
+
+            migrationBuilder.DropTable(
                 name: "AbpRoleClaims");
 
             migrationBuilder.DropTable(
@@ -945,6 +1022,12 @@ namespace JS.Abp.CacheManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUserOrganizationUnits");
+
+            migrationBuilder.DropTable(
+                name: "AbpUserPasskeys");
+
+            migrationBuilder.DropTable(
+                name: "AbpUserPasswordHistories");
 
             migrationBuilder.DropTable(
                 name: "AbpUserRoles");
