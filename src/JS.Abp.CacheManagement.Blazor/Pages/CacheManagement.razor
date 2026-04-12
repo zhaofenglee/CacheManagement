@@ -68,7 +68,7 @@
                 <Form id="SearchForm" class="mb-3">
                     <Addons>
                         <Addon AddonType="AddonType.Body">
-                            <TextEdit Placeholder="@L["Filter"].Value" @bind-Text="@Filter.FilterText"/>
+                            <TextInput Placeholder="@L["Filter"].Value" @bind-Value="@Filter.FilterText"/>
                         </Addon>
                         <Addon AddonType="AddonType.End">
                             <SubmitButton Form="SearchForm" Clicked="GetCacheItemsAsync">
@@ -93,7 +93,7 @@
                             <DisplayTemplate>
                                 <EntityActions TItem="CacheItemDataDto" Type="ActionType.Button">
                                     <EntityAction TItem="CacheItemDataDto"
-                                                  Clicked="() => OpenCacheItemChangeModal(context)"
+                                                  Clicked="() => OpenCacheItemChangeModal(context.Item)"
                                                   Text="@L["ShowCache"]">
                                     </EntityAction>
                                 </EntityActions>
@@ -115,8 +115,8 @@
 
 
 @* ************************* SHOW MODAL ************************* *@
-<Modal @ref="ShowCacheModal" Closing="@ShowCacheModal.CancelClosingModalWhenFocusLost">
-    <ModalContent Centered="true">
+<Modal @ref="ShowCacheModal" Closing="@ShowCacheModal.CancelClosingModalWhenFocusLost" Centered="true">
+    <ModalContent>
         <Form id="ShowCacheModalForm">
             <ModalHeader>
                 <ModalTitle>@L["Update"]</ModalTitle>
@@ -125,12 +125,12 @@
             <ModalBody>
                 <Field>
                     <FieldLabel>@L["CacheKey"]</FieldLabel>
-                    <TextEdit @bind-Text="@EditCacheItemData.CacheKey"></TextEdit>
+                    <TextInput @bind-Value="@EditCacheItemData.CacheKey"></TextInput>
                 </Field>
 
                 <Field>
                     <FieldLabel>@L["CacheValue"]</FieldLabel>
-                    <MemoEdit Rows="8" @bind-Text="@EditCacheItemData.CacheValue"></MemoEdit>
+                    <MemoInput Rows="8" @bind-Value="@EditCacheItemData.CacheValue"></MemoInput>
                 </Field>
 
 
