@@ -1,9 +1,9 @@
 <Project>
 	<PropertyGroup>
 		<LangVersion>latest</LangVersion>
-		<Version>10.4.1</Version>
-		<VoloAbpPackageVersion>10.4.1</VoloAbpPackageVersion>
-		<BlazoriseVersion>2.0.0</BlazoriseVersion>
+		<Version>10.5.0</Version>
+		<VoloAbpPackageVersion>10.5.0</VoloAbpPackageVersion>
+		<BlazoriseVersion>2.2.1</BlazoriseVersion>
 		<Description>Abp CacheManagement Module</Description>
 		<Authors>zhaofenglee</Authors>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
