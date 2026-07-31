@@ -17,8 +17,8 @@
         <PackageReference Include="Blazorise.Icons.FontAwesome" Version="$(BlazoriseVersion)" />
         <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
         <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.7" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9" />
     </ItemGroup>
 
     <ItemGroup>
